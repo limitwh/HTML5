@@ -1,0 +1,47 @@
+<!-- HTML5/hifive 编程技术能力水平考试（编程题） -->
+
+<!-- 记事本 html文件 -->
+
+<!-- 请输入你的姓名：            -->
+<!-- 请输入考试日期：            -->
+
+<!-- 可自行修改或追加代码，实现题目要求 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>记事本</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+	<script src="lib/jQuery/jquery.min.js"></script>
+	<script src="lib/hifive/ejs-h5mod.js"></script>
+    <script src="lib/hifive/h5.dev.js"></script>
+
+	</script>
+	<script>
+		$(function() {
+    			var helloWorldController = {
+	        	__name: 'HelloWorldController',
+ 
+  					'input[type=button] click': function(context, $el) {  
+    				alert('clicked!');  
+    	    	}
+	    	};
+
+    		h5.core.controller('#container', helloWorldController );
+		});
+</script>
+</head>
+<body>
+  <div id="container">  
+    <input type="button" name="click1" value="click1" />  
+  </div>  
+  <br>
+  <div>  
+    <input type="button" name="click2" value="click2" />  
+  </div
+</body>
+</html>

@@ -1,0 +1,20 @@
+/* HTML5/hifive 编程技术能力水平考试（编程题） */
+
+/* 记事本 css文件 */
+
+/* 请输入你的姓名：            */
+/* 请输入考试日期：            */
+
+/* 将以下代码补充完整，实现题目要求 */
+
+@charset 'utf-8';
+
+body, h1, h2, h3, ul, li {
+	margin: 0;
+}
+
+ul {
+	padding: 0;
+	list-style: none;
+}
+

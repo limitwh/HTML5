@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>Html</title>
+		<link href="../lib/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	</head>
+
+	<body>
+		<div>
+			<div style='width:25%;'>
+				<ul id="tree" class="ztree" style='width:100%'>
+
+				</ul>
+			</div>
+			<div id='readme' style='width:70%;margin-left:20%;'>
+				<article class='markdown-body'>
+					<h1>什么是Html?</h1>
+					<blockquote>
+						<p>超文本标记语言（英语：HyperText Markup Language，简称：HTML）是一种用于创建网页的标准标记语言。 您可以使用 HTML 来建立自己的 WEB 站点，HTML 运行在浏览器上，由浏览器来解析。</p>
+					</blockquote>
+					<h2>Html的发展历史</h2>
+					<blockquote>
+						<p>超文本标记语言（第一版）——在1993年6月作为互联网工程工作小组（IETF）工作草案发布（并非标准）：</p>
+					</blockquote>
+					<ul class="space">
+						<li>HTML 2.0——1995年11月作为RFC 1866发布，在RFC 2854于2000年6月发布之后被宣布已经过时</li>
+						<li>HTML 3.2——1997年1月14日，W3C推荐标准</li>
+						<li>HTML 4.0——1997年12月18日，W3C推荐标准</li>
+						<li>HTML 4.01（微小改进）——1999年12月24日，W3C推荐标准</li>
+						<li>HTML 5——2014年10月28日，W3C推荐标准</li>
+					</ul>
+					<p><strong>以下都是学习HTML 5，W3C标准推荐的版本。</strong></p>
+					<h2>Html实例</h2>
+					<pre><code>&lt;!DOCTYPE html&gt;  //文档类型的申明 <a href="http://www.w3school.com.cn/tags/tag_doctype.asp">点击查看文档类型申明的种类</a>
+&lt;html&gt; //&lt;html&gt;元素是 HTML页面的根元素
+    &lt;head&gt; //&lt;head&gt;元素包含了文档的元（meta）数据
+        &lt;meta charset="utf-8"&gt; //中文网页需要使用 &lt;meta charset="utf-8"&gt;声明编码，否则会出现乱码。有些浏览器会设置 GBK 为默认编码，
+        则你需要设置为 &lt;meta charset="gbk"&gt;。 
+        &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt; //&lt;title&gt;元素描述了文档的标题
+    &lt;/head&gt;
+    &lt;body&gt;  //&lt;body&gt;元素包含了可见的页面内容
+        &lt;h1>我的第一个标题&lt;/h1&gt;  //&lt;h1&gt; 元素定义一个大标题
+        &lt;p>我的第一个段落。&lt;/p&gt;   //&lt;p&gt;元素定义一个段落
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+					<h2>Html注释</h2>
+					<p><strong>HTML注释标签</strong></p>
+					<pre><code>&lt;!--这是一个注释，注释在浏览器中不会显示--&gt;</code></pre>
+					<p>&lt;!--...--&gt;注释标签用来在源文档中插入注释。注释不会在浏览器中显示。 您可使用注释对您的代码进行解释，这样做有助于您在以后的时间对代码的编辑。特别是代码量很大的情况下很有用。 您也可以在注释内容存储针对程序所定制的信息。在这种情况下，这些信息对用户是不可见的，但是对程序来说是可用的。一个好的习惯是把注释或样式元素放入注释文本中，这样就可避免不支持脚本或样式的老浏览器把它们显示为纯文本。
+					</p>
+					<h2>Html标签介绍</h2>
+					<p>HTML 标记标签通常被称为 HTML标签(HTML tag)。</p>
+					<ul class="space">
+						<li>1.HTML 标签是由尖括号包围的关键词，比如 &lt;html&gt;</li>
+						<li>2.HTML 标签通常是成对出现的，比如 &lt;b&gt;和 &lt;/b&gt;</li>
+						<li>3.标签对中的第一个标签是开始标签，第二个标签是结束标签</li>
+						<li>4.开始和结束标签也被称为开放标签和闭合标签</li>
+					</ul>
+					<pre><code>&lt;标签&gt;内容&lt;标签&gt;</code></pre>
+					<h2>Html元素介绍</h2>
+					<blcokquote>
+						<p>"HTML 标签" 和 "HTML 元素" 通常都是描述同样的意思。<br /> 但是严格来讲, 一个 HTML 元素包含了开始标签与结束标签，如下实例: <br /> HTML 元素:</p>
+						<pre><code>&lt;p&gt;这是一个段落&lt;/p&gt;</code></pre>
+					</blcokquote>
+					<p><strong>更多资料请查看:</strong> <br />
+						<a href="http://www.runoob.com/html/html-intro.html">html的基础知识</a>
+					</p>
+
+					<h1>Html标签</h1>
+					<h2>标题标签</h2>
+					<p><strong>Html标题</strong></p>
+					<blockquote>
+						<p>标题（Heading）是通过 &lt;h1&gt; - &lt;h6&gt; 标签进行定义的 <br /> &lt;h1&gt; 定义最大的标题。 &lt;h6&gt; 定义最小的标题。</p>
+						<p><strong>实例</strong></p>
+						<pre><code>&lt;h1&gt;这是一个标题。&lt;/h1&gt;
+&lt;h2&gt;这是一个标题。&lt;/h2&gt;
+&lt;h3&gt;这是一个标题。&lt;/h3&gt;</code></pre>
+						<p>请确保将 HTML 标题 标签只用于标题。不要仅仅是为了生成粗体或大号的文本而使用标题。<br /> 搜索引擎使用标题为您的网页的结构和内容编制索引。
+							<br /> 因为用户可以通过标题来快速浏览您的网页，所以用标题来呈现文档结构是很重要的。
+							<br /> 应该将 h1 用作主标题（最重要的），其后是 h2（次重要的），再其次是 h3，以此类推。</p>
+					</blockquote>
+					<p><strong>Html水平线</strong></p>
+					<blockquote>
+						<p>&lt;hr&gt; 标签在 HTML 页面中创建水平线。<br /> hr 元素可用于分隔内容。</p>
+						<p><strong>实例</strong></p>
+						<pre><code>&lt;p&gt;这是一个段落。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这是一个段落。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;这是一个段落。&lt;/p&gt;</code></pre>
+					</blockquote>
+
+					<p><strong>Html注释</strong></p>
+					<blockquote>
+						<p>可以将注释插入 HTML 代码中，这样可以提高其可读性，使代码更易被人理解。浏览器会忽略注释，也不会显示它们。 注释写法如下:
+						</p>
+						<strong>实例</strong>
+						<pre><code>&lt;!-- 这是一个注释 --&gt;</code></pre>
+						<p>注释: 开始括号之后（左边的括号）需要紧跟一个叹号，结束括号之前（右边的括号）不需要，合理地使用注释可以对未来的代码编辑工作产生帮助。</p>
+					</blockquote>
+					<table class="tb1">
+						<thead>
+							<tr>
+								<td>标签</td>
+								<td>描述</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-html.html">&lt;html&gt;</a>
+								</td>
+								<td>定义 HTML 文档</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-body.html">&lt;body&gt;</a>
+								</td>
+								<td>定义文档的主体</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-hn.html">&lt;h1&gt;-&lt;h6&gt;</a>
+								</td>
+								<td>定义 HTML 标题</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-hr.html">&lt;hr&gt;</a>
+								</td>
+								<td>定义水平线</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-comment.html">&lt;!--...--&gt;</a>
+								</td>
+								<td>定义注释</td>
+							</tr>
+						</tbody>
+					</table>
+					<h2>段落标签</h2>
+					<p><strong>Html段落</strong></p>
+					<blockquote>
+						<p>段落是通过 &lt;p&gt;标签定义的。</p>
+						<strong>实例</strong>
+						<pre><code>&lt;p&gt;这是一个段落 &lt;/p&gt;
+&lt;p&gt;这是另一个段落&lt;/p&gt;</code></pre>
+					</blockquote>
+					<p><strong>Html折行</strong></p>
+					<blockquote>
+						<p>如果您希望在不产生一个新段落的情况下进行换行（新行），请使用 &lt;br /&gt;标签：</p>
+						<strong>实例</strong>
+						<pre><code>&lt;p&gt;这个&lt;br&gt;段落&lt;br&gt;演示了分行的效果&lt;/p&gt;</code></pre>
+						<p>&lt;br /&gt;元素是一个空的 HTML 元素。由于关闭标签没有任何意义，因此它没有结束标签。</p>
+					</blockquote>
+					<table class="tb1">
+						<thead>
+							<tr>
+								<td>标签</td>
+								<td>描述</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-p.html">&lt;p&gt;</a>
+								</td>
+								<td>定义一个段落</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-br.html">&lt;br&gt;</a>
+								</td>
+								<td>插入单个折行（换行）</td>
+							</tr>
+						</tbody>
+					</table>
+					<h2>格式化标签</h2>
+					<p><strong>Html格式化标签</strong></p>
+					<blockquote>
+						<p>HTML 使用标签 &lt;b&gt;("bold") 与 &lt;i&gt;("italic") 对输出的文本进行格式, 如：粗体 or 斜体 这些HTML标签被称为格式化标签
+						</p>
+						<pre><code>通常标签 &lt;strong&gt;替换加粗标签 &lt;b&gt; 来使用, &lt;em&gt; 替换 &lt;i&gt;标签使用。
+然而，这些标签的含义是不同的：
+&lt;b&gt; 与&lt;i&gt; 定义粗体或斜体文本。
+&lt;strong&gt;或者 &lt;em&gt;意味着你要呈现的文本是重要的，所以要突出显示。现今所有主要浏览器都能渲染各种效果的字体。
+不过，未来浏览器可能会支持更好的渲染效果。</code></pre>
+					</blockquote>
+					<table class="tb1">
+						<thead>
+							<tr>
+								<td>标签</td>
+								<td>描述</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-b.html">&lt;b&gt;</a>
+								</td>
+								<td>定义粗体文本</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-em.html">&lt;em&gt;</a>
+								</td>
+								<td>定义着重文字</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-i.html">&lt;i&gt;</a>
+								</td>
+								<td>定义斜体字</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-strong.html">&lt;strong&gt;</a>
+								</td>
+								<td>定义加重语气</td>
+							</tr>
+						</tbody>
+					</table>
+					<p><strong>更多格式化标签请查看以下链接:</strong><br />
+						<a href="http://www.runoob.com/html/html-formatting.html">http://www.runoob.com/html/html-formatting.html</a>
+					</p>
+					<h2>链接标签</h2>
+					<p><strong>Html链接</strong></p>
+					<blockquote>
+						<p>HTML 使用超级链接与网络上的另一个文档相连。几乎可以在所有的网页中找到链接。点击链接可以从一张页面跳转到另一张页面。 HTML使用标签 &lt;a&gt;来设置超文本链接。 <br /> 超链接可以是一个字，一个词，或者一组词，也可以是一幅图像，您可以点击这些内容来跳转到新的文档或者当前文档中的某个部分。
+							<br /> 当您把鼠标指针移动到网页中的某个链接上时，箭头会变为一只小手。
+							<br /> 在标签&lt;a&gt;中使用了href属性来描述链接的地址。
+							<br /> 默认情况下，链接将以以下形式出现在浏览器中：
+							<br /> 1、一个未访问过的链接显示为蓝色字体并带有下划线。
+							<br /> 2、访问过的链接显示为紫色并带有下划线。
+							<br /> 3、点击链接时，链接显示为红色并带有下划线。
+							<br /> 注意：链接的样式可以通过css来修改
+						</p>
+						<strong>实例</strong>
+						<pre><code>&lt;a id="tips" href="http://www.baidu.com/" target="_blank"&gt;访问百度&lt;/a&gt;
+//href 属性描述了链接的目标。
+//target 属性，你可以定义被链接的文档在何处显示。"_blank"会使链接在新窗口打开文档
+//id 属性可用于创建在一个HTML文档书签标记。
+//在HTML文档中插入ID:
+&lt;p id="tips"&gt;有用的提示部分&lt;/p&gt;
+//在HTML文档中创建一个链接到"有用的提示部分(id="tips"）"
+&lt;a href="#tips"&gt;访问有用的提示部分&lt;/a&gt;
+//这样点击a链接就能跳到提示部分信息那边
+</code></pre>
+					</blockquote>
+					<h2>图像标签</h2>
+					<p><strong>Html图像</strong></p>
+					<blockquote>
+						<p>在 HTML 中，图像由&lt;img&gt; 标签定义。<br /> &lt;img&gt; 是空标签，意思是说，它只包含属性，并且没有闭合标签。<br /> 要在页面上显示图像，你需要使用源属性（src）。src 指 "source"。源属性的值是图像的 URL 地址。</p>
+						<strong>语法</strong>
+						<pre><code>&lt;img src="url" alt="some_text" alt="Big Boat" width="304" height="228"&gt;
+//URL 指存储图像的位置。
+//alt 属性用来为图像定义一串预备的可替换的文本。
+//height（高度） 与 width（宽度）属性用于设置图像的高度与宽度。</code></pre>
+					</blockquote>
+					<table class="tb1">
+						<thead>
+							<tr>
+								<td>标签</td>
+								<td>描述</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-img.html">&lt;img&gt;</a>
+								</td>
+								<td>定义图像</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-map.html">&lt;map&gt;</a>
+								</td>
+								<td>定义图像地图</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-area.html">&lt;area&gt;</a>
+								</td>
+								<td>定义图像地图中的可点击区域</td>
+							</tr>
+						</tbody>
+					</table>
+					<h2>表格标签</h2>
+					<p><strong>Html表格</strong></p>
+					<blockquote>
+						<p>表格由 &lt;table&gt;标签来定义。每个表格均有若干行（由 &lt;tr&gt;标签定义），每行被分割为若干单元格（由
+							<td> 标签定义）。字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。</p>
+						<strong>实例</strong>
+						<pre><code> &lt;table border="1"&gt;
+     &lt;tr&gt;
+         &lt;td&gt;row 1, cell 1 &lt;/td&gt;
+         &lt;td&gt;row 1, cell 2 &lt;/td&gt;
+     &lt;/tr&gt;
+     &lt;tr&gt;
+         &lt;td&gt;row 2, cell 1 &lt;/td&gt;
+         &lt;td&gt;row 2, cell 2 &lt;/td&gt;
+     &lt;/tr&gt;
+ &lt;/table&gt;</code></pre>
+						<strong>浏览器显示如下图</strong> <br />
+						<img src="../images/24.jpg" />
+					</blockquote>
+					<p><strong>Html表格表头</strong></p>
+					<blockquote>
+						<p>表格的表头使用 &lt;th&gt;标签进行定义。 大多数浏览器会把表头显示为粗体居中的文本
+						</p>
+						<strong>实例</strong>
+						<pre><code>&lt;table border="1"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Header 1&lt;/th&gt;
+        &lt;th&gt;Header 2&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;row 1, cell 1&lt;/td&gt;
+        &lt;td&gt;row 1, cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;row 2, cell 1&lt;/td&gt;
+        &lt;td&gt;row 2, cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+						<strong>浏览器显示如下图</strong><br />
+						<img src="../images/25.jpg" />
+					</blockquote>
+					<p><strong>更多表格标签请参考:</strong>
+						<a href="http://www.runoob.com/html/html-tables.html">http://www.runoob.com/html/html-tables.html</a>
+					</p>
+					<h2>表单标签</h2>
+					<h3>表单的定义</h3>
+					<blockquote>
+						<p>表单是一个包含表单元素的区域。 表单元素是允许用户在表单中输入内容,比如：文本域(textarea)、下拉列表、单选框(radio-buttons)、复选框(checkboxes)等等。 表单使用表单标签 <code>form</code>来设置:</p>
+						<strong>实例</strong>
+						<pre><code>&lt;form action="demo_form.php" method="get"&gt;
+  First name: &lt;input type="text" name="fname"&gt;&lt;br&gt;
+  Last name: &lt;input type="text" name="lname"&gt;&lt;br&gt;
+  &lt;input type="submit" value="提交"&gt;
+&lt;/form&gt;</code></pre>
+					</blockquote>
+					<h3>表单的输入元素</h3>
+					<p>多数情况下被用到的表单标签是输入标签（&lt;input&gt;）。 输入类型是由类型属性（type）定义的。大多数经常被用到的输入类型如下：
+					</p>
+					<blockquote>
+						<strong>文本域（Text Fields）</strong>
+						<p>文本域通过&lt;input type="text"&gt;标签来设定，当用户要在表单中键入字母、数字等内容时，就会用到文本域。</p>
+						<pre><code>&lt;form&gt;
+First name: &lt;input type="text" name="firstname"&gt;&lt;br&gt;
+Last name: &lt;input type="text" name="lastname"&gt;
+&lt;/form&gt;</code></pre>
+						<p>浏览器显示如下：</p>
+						First name: <input type="text" name="firstname"><br> Last name: <input type="text" name="lastname"> <br />
+						<strong>注意:表单本身并不可见。同时，在大多数浏览器中，文本域的缺省宽度是20个字符。</strong> <br />
+					</blockquote>
+					<blockquote>
+						<strong>密码字段</strong>
+						<p>密码字段通过标签&lt;input type="password"&gt;来定义:</p>
+						<pre><code>&lt;form&gt;
+Password: &lt;input type="password" name="pwd"&gt;
+&lt;/form&gt;</code></pre>
+						<p>浏览器显示如下：</p>
+						Password: <input type="password" name="pwd"> <br />
+						<strong>注意:密码字段字符不会明文显示，而是以星号或圆点替代。</strong>
+					</blockquote>
+					<h3>表单提交的两种方式</h3>
+					<blockquote>
+						<p>&lt;form&gt;标签用来创建供用户输入的html表单，它可以将用户输入的信息获取到，然后通过特定方法发送到后台。这就是所谓的http方法，客户端（浏览器）向服务器提交 HTTP 请求；服务器向客户端返回响应。响应包含关于请求的状态信息以及可能被请求的内容。</p>
+					</blockquote>
+					<p><strong>get方法</strong></p>
+					<blockquote>
+						<p>从指定的资源请求数据。以下是它的一些特征</p>
+						<ul class="space">
+							<li>1.GET 请求可被缓存</li>
+							<li>2.GET 请求保留在浏览器历史记录中</li>
+							<li>3.GET 请求可被收藏为书签</li>
+							<li>4.GET 请求不应在处理敏感数据时使用</li>
+							<li>5.GET 请求有长度限制</li>
+							<li>6.GET 请求只应当用于取回数据</li>
+						</ul>
+					</blockquote>
+					<p><strong>post方法</strong></p>
+					<blockquote>
+						<p>向指定的资源提交要被处理的数据。。以下是它的一些特征</p>
+						<ul class="space">
+							<li>1.POST 请求不会被缓存</li>
+							<li>2.POST 请求不会保留在浏览器历史记录中</li>
+							<li>3.POST 不能被收藏为书签</li>
+							<li>4.POST 请求对数据长度没有要</li>
+						</ul>
+					</blockquote>
+					<p><strong>更多表单标签及属性请查看以下链接:</strong> <br />
+						<a href="http://www.runoob.com/html/html-forms.html">http://www.runoob.com/html/html-forms.html</a> <br />
+						<a href="http://www.runoob.com/tags/html-httpmethods.html">http://www.runoob.com/tags/html-httpmethods.html</a>
+					</p>
+					<h2>列表标签</h2>
+					<p><strong>Html无序列表</strong></p>
+					<blockquote>
+						<p>无序列表是一个项目的列表，此列项目使用粗体圆点（典型的小黑圆圈）进行标记。 无序列表使用 &lt;ul&gt;标签</p>
+						<strong>实例</strong>
+						<pre><code>&lt;ul&gt;
+&lt;li&gt;Coffee&lt;/li&gt;
+&lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+						<strong>浏览器显示如下</strong> <br />
+						<img src="../images/3.png" />
+					</blockquote>
+					<p><strong>Html有序列表</strong></p>
+					<blockquote>
+						<p>同样，有序列表也是一列项目，列表项目使用数字进行标记。 有序列表始于 &lt;ol&gt;标签。每个列表项始于 &lt;li&gt;标签。 列表项项使用数字来标记。
+						</p>
+						<strong>实例</strong>
+						<pre><code>&lt;ol&gt;
+&lt;li&gt;Coffee&lt;/li&gt;
+&lt;li&gt;Milk&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+						<strong>浏览器显示如下</strong> <br />
+						<img src="../images/4.png" />
+					</blockquote>
+					<p><strong>Html自定义列表</strong></p>
+					<blockquote>
+						<p>自定义列表不仅仅是一列项目，而是项目及其注释的组合。 自定义列表以 &lt;dl&gt;标签开始。每个自定义列表项以 &lt;dt&gt;开始。每个自定义列表项的定义以 &lt;dd&gt;开始。</p>
+						<strong>实例</strong>
+						<pre><code>&lt;dl&gt;
+&lt;dt&gt;Coffee&lt;/dt&gt;
+&lt;dd&gt;- black hot drink&lt;/dd&gt;
+&lt;dt&gt;Milk&lt;/dt&gt;
+&lt;dd&gt;- white cold drink&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+						<strong>浏览器显示如下</strong> <br />
+						<img src="../images/5.png" />
+					</blockquote>
+					<p><strong>更多列表标签请参考:</strong>
+						<a href="http://www.runoob.com/html/html-lists.html">http://www.runoob.com/html/html-lists.html</a>
+					</p>
+					<h1>Html属性</h1>
+					<h2>属性的特征</h2>
+					<ul class="space">
+						<li>1、HTML 元素可以设置属性</li>
+						<li>2、属性可以在元素中添加附加信息</li>
+						<li>3、属性一般描述于开始标签</li>
+						<li>4、属性总是以名称/值对的形式出现，比如：name="value"</li>
+					</ul>
+					<h2>属性的实例</h2>
+					<blcokquote>
+						<p>HTML 链接由 &lt;a&gt;标签定义。链接的地址在 href 属性中指定：</p>
+					</blcokquote>
+					<pre><code>&lt;a href="http://www.runoob.com"&gt;这是一个链接&lt;/a&gt;</code></pre>
+					<blockquote>
+						<p>属性值应该始终被包括在引号内。<br /> 双引号是最常用的，不过使用单引号也没有问题。
+							<br /> 属性和属性值对大小写不敏感。
+							<br /> 不过，万维网联盟在其 HTML 4 推荐标准中推荐小写的属性/属性值。<br /> 而新版本的 (X)HTML 要求使用小写属性。<br />
+							<strong>下面列出了适用于大多数 HTML元素的属性：</strong></p>
+					</blockquote>
+					<table class="tb1">
+						<thead>
+							<tr>
+								<td>属性</td>
+								<td>描述</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>class</td>
+								<td>为html元素定义一个或多个类名（classname）(类名从样式文件引入)</td>
+							</tr>
+							<tr>
+								<td>id</td>
+								<td>定义元素的唯一id</td>
+							</tr>
+							<tr>
+								<td>style</td>
+								<td>规定元素的行内样式（inline style）</td>
+							</tr>
+							<tr>
+								<td>title</td>
+								<td>描述了元素的额外信息 (作为工具条使用)</td>
+							</tr>
+						</tbody>
+					</table>
+					<p><strong>更多标准属性说明:</strong>
+						<a href="http://www.runoob.com/tags/html-reference.html">HTML 标准属性参考手册</a>
+					</p>
+					<h1>Html元素</h1>
+					<p><strong>&lt;head&gt;元素</strong></p>
+					<blockquote>
+						<p>&lt;head&gt; 元素包含了所有的头部标签元素。在 &lt;head&gt;元素中你可以插入脚本（scripts）, 样式文件（CSS），及各种meta信息。 可以添加在头部区域的元素标签为: &lt;title&gt;, &lt;style&gt;, &lt;meta&gt;, &lt;link&gt;, &lt;script&gt;, &lt;noscript&gt;, and &lt;base&gt;</p>
+					</blockquote>
+					<p><strong>&lt;title&gt;元素</strong></p>
+					<blockquote>
+						<p>&lt;title&gt; 标签定义了不同文档的标题。<br /> &lt;title&gt; 在 HTML/XHTML 文档中是必须的。<br /> &lt;title&gt; 元素: <br />
+							<ul>
+								<li>定义了浏览器工具栏的标题</li>
+								<li>当网页添加到收藏夹时，显示在收藏夹中的标题</li>
+								<li>显示在搜索引擎结果页面的标题 </li>
+							</ul>
+						</p>
+					</blockquote>
+					<p><strong>&lt;base&gt;元素</strong></p>
+					<blockquote>
+						<p>&lt;base&gt;标签描述了基本的链接地址/链接目标，该标签作为HTML文档中所有的链接标签的默认链接:</p>
+						<pre><code>&lt;head&gt;
+&lt;base href="http://www.runoob.com/images/" target="_blank"&gt;
+&lt;/head></code></pre>
+					</blockquote>
+					<p><strong>&lt;link&gt;元素</strong></p>
+					<blockquote>
+						<p>&lt;link&gt; 标签定义了文档与外部资源之间的关系。<br /> &lt;link&gt;标签通常用于链接到样式表:
+						</p>
+						<pre><code>&lt;head&gt;
+&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;
+&lt;/head&gt;</code></pre>
+					</blockquote>
+					<p><strong>&lt;style&gt;元素</strong></p>
+					<blockquote>
+						<p>&lt;style&gt; 标签定义了HTML文档的样式文件引用地址 <br /> 在&lt;style&gt;元素中你也可以直接添加样式来渲染 HTML 文档:</p>
+						<pre><code>&lt;head&gt;
+&lt;style type="text/css"&gt;
+body {background-color:yellow}
+p {color:blue}
+&lt;/style&gt;
+&lt;/head&gt;</code></pre>
+					</blockquote>
+					<p><strong>&lt;meta&gt;元素</strong></p>
+					<blockquote>
+						<p>meta标签描述了一些基本的元数据。 <br /> &lt;meta&gt; 标签提供了元数据.元数据也不显示在页面上，但会被浏览器解析。<br /> META 元素通常用于指定网页的描述，关键词，文件的最后修改时间，作者，和其他元数据。<br /> 元数据可以使用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他Web服务。
+							<br /> &lt;meta&gt; 一般放置于 &lt;head&gt; 区域</p>
+						<strong>实例</strong>
+						<pre><code>//为搜索引擎定义关键词
+&lt;meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript"&gt;
+//为网页定义描述内容
+&lt;meta name="description" content="免费 Web & 编程 教程"&gt;
+//定义网页作者
+&lt;meta name="author" content="NSSOL"&gt;
+//每30秒钟刷新当前页面
+&lt;meta http-equiv="refresh" content="30"&gt;</code></pre>
+					</blockquote>
+					<p><strong>&lt;script&gt;元素</strong></p>
+					<blockquote>
+						<p>&lt;script&gt;标签用于加载脚本文件，如： JavaScript。 <br/> &lt;script&gt;元素在以后的章节中会详细描述。
+						</p>
+					</blockquote>
+					<h2>元素分类</h2>
+					<blockquote>
+						<p>Html可以通过&lt;div&gt;和&lt;span&gt;将元素组合起来。html元素可以分为行内元素和块级元素</p>
+						<strong>Html块级元素</strong>
+						<p>1、块级元素会独占一行，其宽度自动填满其父元素宽度。<br /> 2、块级元素可以设置 width, height属性【注意：块级元素即使设置了宽度，仍然是独占一行的】。<br /> 3、块级元素可以设置margin和 padding <br /> 比如说h系列、
+							<code>p</code>、<code>ul</code>、<code>table</code></p>
+						<strong>Html行内元素</strong>
+						<p>1、行内元素不会独占一行，相邻的行内元素会排列在同一行里，知道一行排不下，才会换行，其宽度随元素的内容而变化。<br /> 2、行内元素设置width、height无效 <br /> 3、行内元素的水平方向的padding-left,padding-right,margin-left,margin-right 都产生边距效果，但是竖直方向的padding-top,padding-bottom,margin-top,margin-bottom都不会产生边距效果。（水平方向有效，竖直方向无效） 比如说&lt;b&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;</p>
+					</blockquote>
+					<p><strong>Html&lt;div&gt;元素</strong></p>
+					<blockquote>
+						<p>HTML &lt;div&gt;元素是块级元素，它可用于组合其他 HTML 元素的容器。 &lt;div&gt;元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。 如果与 CSS 一同使用，&lt;div&gt;元素可用于对大的内容块设置样式属性。 &lt;div&gt;元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 &lt;table&gt;元素进行文档布局不是表格的正确用法。&lt;table&gt;元素的作用是显示表格化的数据。</p>
+					</blockquote>
+					<p><strong>Html&lt;span&gt;元素</strong></p>
+					<blockquote>
+						<p>HTML &lt;span&gt;元素是内联元素，可用作文本的容器 &lt;span&gt;元素也没有特定的含义。 当与 CSS 一同使用时，&lt;span&gt;元素可用于为部分文本设置样式属性。</p>
+					</blockquote>
+					<table class="tb1">
+						<thead>
+							<tr>
+								<td>标签</td>
+								<td>描述</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-div.html">&lt;div&gt;</a>
+								</td>
+								<td>定义了文档的区域，块级 (block-level)</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="http://www.runoob.com/tags/tag-span.html">&lt;span&gt;</a>
+								</td>
+								<td>用来组合文档中的行内元素， 内联元素(inline)</td>
+							</tr>
+						</tbody>
+					</table>
+					<h2>表单元素</h2>
+					<p><strong>Html表单</strong></p>
+					<blockquote>
+						<p>表单是一个包含表单元素的区域。 表单元素是允许用户在表单中输入内容,比如：文本域(textarea)、下拉列表、单选框(radio-buttons)、复选框(checkboxes)等等。 表单使用表单标签 &lt;form&gt;来设置:</p>
+						<pre><code>&lt;form&gt;
+.
+input 元素
+.
+&lt;/form&gt;</code></pre>
+					</blockquote>
+					<p><strong>表单输入元素</strong></p>
+					<blockquote>
+						<p>多数情况下被用到的表单标签是输入标签（&lt;input&gt;）。 输入类型是由类型属性（type）定义的。大多数经常被用到的输入类型如下：
+						</p>
+						<strong>文本域</strong>
+						<p>文本域通过&lt;input type="text"&gt;标签来设定，当用户要在表单中键入字母、数字等内容时，就会用到文本域。
+						</p>
+						<pre><code>&lt;form&gt;
+First name: &lt;input type="text" name="firstname"&gt; &lt;br/&gt;
+Last name: &lt;input type="text" name="lastname"&gt;
+&lt;/form&gt;</code></pre>
+						<strong>显示器显示如下</strong><br />
+						<img src="../images/6.png" alt="" />
+						<p>注意:表单本身并不可见。同时，在大多数浏览器中，文本域的缺省宽度是20个字符。</p>
+						<strong>密码字段</strong>
+						<p>密码字段通过标签&lt;input type="password"&gt;来定义:</p>
+						<pre><code>&lt;form&gt;
+Password: &lt;input type="password" name="pwd"&gt;
+&lt;/form&gt;</code></pre>
+						<strong>浏览器显示效果如下</strong>
+						<form>
+							Password: <input type="password" name="pwd">
+						</form>
+						<strong>更多属性选项</strong>
+						<pre><code>&lt;input type="radio"&gt;//
+&lt;input type="checkbox"&gt;//定义了复选框. 用户需要从若干给定的选择中选取一个或若干选项。标签定义了表单单选框选项
+&lt;input type="submit"&gt;//定义了提交按钮.</code></pre>
+					</blockquote>
+					<p>更多表单标签请参考:
+						<a href="http://www.runoob.com/html/html-forms.html">http://www.runoob.com/html/html-forms.html</a>
+					</p>
+					<h1>Html颜色的表示</h1>
+					<blockquote>
+						<p>HTML 颜色由红色、绿色、蓝色混合而成。</p>
+					</blockquote>
+					<p><strong>颜色值</strong></p>
+					<blockquote>
+						<p>HTML 颜色由一个十六进制符号来定义，这个符号由红色、绿色和蓝色的值组成（RGB）。 每种颜色的最小值是0（十六进制：#00）。最大值是255（十六进制：#FF）。 这个表格给出了由三种颜色混合而成的具体效果
+						</p>
+					</blockquote>
+					<img src="../images/7.png" alt="" />
+					<p><strong>更多颜色值的表示请参考链接:</strong>
+						<a href="http://www.runoob.com/html/html-colors.html">http://www.runoob.com/html/html-colors.html</a>
+					</p>
+					<p><strong>颜色名</strong></p>
+					<blockquote>
+						<p>141个颜色名称是在HTML和CSS颜色规范定义的（17标准颜色，再加124）。下表列出了所有颜色的值，包括十六进制值。 提示: 17标准颜色：黑色，蓝色，水，紫红色，灰色，绿色，石灰，栗色，海军，橄榄，橙，紫，红，白，银，蓝绿色，黄色。点击其中一个颜色名称（或一个十六进制值）就可以查看与不同文字颜色搭配的背景颜色。</p>
+					</blockquote>
+					<p><strong>更多颜色名的表示请参考链接:</strong>
+						<a href="http://www.runoob.com/html/html-colornames.html">http://www.runoob.com/html/html-colornames.html</a>
+					</p>
+					<h1>Html关于CSS的引用</h1>
+					<blockquote>
+						<p>CSS (Cascading Style Sheets) 用于渲染HTML元素标签的样式.</p>
+					</blockquote>
+					<p><strong>在html中如何使用css</strong></p>
+					<p>CSS 是在 HTML 4 开始使用的,是为了更好的渲染HTML元素而引入的。<br /> CSS 可以通过以下方式添加到HTML中:</p>
+					<ul>
+						<li>内联样式- 在HTML元素中使用"style" 属性</li>
+						<li>内部样式表 -在HTML文档头部 &lt;head&gt;区域使用&lt;style&gt;元素 来包含CSS</li>
+						<li>外部引用 - 使用外部 CSS 文件</li>
+					</ul>
+					<p>注意:最好的方式是通过外部引用CSS文件。</p>
+					<p><strong>内联样式</strong></p>
+					<blockquote>
+						<p>当特殊的样式需要应用到个别元素时，就可以使用内联样式。 使用内联样式的方法是在相关的标签中使用样式属性。样式属性可以包含任何 CSS 属性。以下实例显示出如何改变段落的颜色和左外边距。</p>
+						<strong>实例</strong>
+						<pre><code>&lt;p style="color:blue;margin-left:20px;"&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+					</blockquote>
+					<p><strong>内部样式</strong></p>
+					<blockquote>
+						<p>当单个文件需要特别样式时，就可以使用内部样式表。你可以在&lt;head&gt;部分通过 &lt;style&gt;标签定义内部样式表:</p>
+						<strong>实例</strong>
+						<pre><code>&lt;head&gt;
+&lt;style type="text/css"&gt;
+body {background-color:yellow;}
+p {color:blue;}
+&lt;/style&gt;
+&lt;/head&gt;</code></pre>
+					</blockquote>
+					<p><strong>外部样式</strong></p>
+					<blockquote>
+						<p>当样式需要被应用到很多页面的时候，外部样式表将是理想的选择。使用外部样式表，你就可以通过更改一个文件来改变整个站点的外观。</p>
+						<strong>实例</strong>
+						<pre><code>&lt;head&gt;
+&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;
+&lt;/head&gt;</code></pre>
+					</blockquote>
+					<h1>Html脚本</h1>
+					<blockquote>
+						<p>JavaScript 使 HTML 页面具有更强的动态和交互性。</p>
+					</blockquote>
+					<p><strong>HTML &lt;script&gt;标签</strong></p>
+					<blockquote>
+						<p>&lt;script&gt; 标签用于定义客户端脚本，比如 JavaScript。 &lt;script&gt; 元素既可包含脚本语句，也可通过 src 属性指向外部脚本文件。 JavaScript 最常用于图片操作、表单验证以及内容动态更新。</p>
+						<strong>实例</strong>
+						<pre><code>&lt;script&gt;
+document.write("Hello World!");
+&lt;/script&gt;</code></pre>
+					</blockquote>
+					<p><strong>HTML&lt;noscript&gt;标签</strong></p>
+					<blockquote>
+						<p>&lt;noscript&gt; 标签提供无法使用脚本时的替代内容，比方在浏览器禁用脚本时，或浏览器不支持客户端脚本时。 &lt;noscript&gt;元素可包含普通 HTML 页面的 body 元素中能够找到的所有元素。 只有在浏览器不支持脚本或者禁用脚本时，才会显示 &lt;noscript&gt; 元素中的内容：</p>
+						<strong>实例</strong>
+						<pre><code>&lt;script&gt;
+document.write("Hello World!")
+&lt;/script&gt;
+<noscript>抱歉，你的浏览器不支持 JavaScript!</noscript></code></pre>
+					</blockquote>
+					<h1>Html速查列表</h1>
+					<p><strong>更多关于Html的知识请查看链接:</strong>
+						<a href="http://www.runoob.com/html/html-quicklist.html">http://www.runoob.com/html/html-quicklist.html</a>
+					</p>
+					<h1>复习小结</h1>
+					<h2>总结</h2>
+					<p>html标签是用来构建web画面的基本结构，它相当于是开发的根基。接下来我们来回顾一下本章学习的内容。</p>
+					<ul class="space">
+						<li>1.简要概述了html的基本概念，以及它所包含哪些基础知识是需要我们学习的。</li>
+						<li>2.介绍了html的标签，在我们实际开发中标签是构建页面最重要的。</li>
+						<li>3.学习了html的标签后，就该学习这些标签都有哪些属性，便于我们更好的利用这些标签。</li>
+						<li>4.html元素是指由html标签和它所包裹起来的内容而形成的一个状态。</li>
+						<li>5.html中表示颜色的方法有多样性。</li>
+						<li>6.html如何引用css。</li>
+						<li>7.html中引用javascript脚本语言。</li>
+					</ul>
+					<h2>FAQ</h2>
+					<div class="one">
+						<strong>1.为什么在页面里面有DIV 和有ul li之类的区分 ？ </strong>
+						<blockquote>
+							<p>一个html页需要有内容描述，html是被用来结构化信息的，例如标题、段落和列表等，因此有了div、title，p，li等标签之分，div是文档中的分隔符，块级元素，用div把网页分隔成块，使网页元素有格式化的效果，ul、li是列表项目，这样用就有很大的好处；减少了对类的设置、使语义更加清晰、更加方便CSS的定义等。
+							</p>
+						</blockquote>
+
+					</div>
+					<div class="two">
+						<strong>2.为什么在列表中应不用换行符？</strong>
+						<blockquote>
+							<p>在HTML中经常会用到排序列表（ol）和非排序列表（ul），它们不仅让条目显示更加灵活，还可以实现许多其他的功能。正确使用列表tag可以更方便的显示信息。但要注意避免在代码中使用换行符。搜索引擎会识别列表tag，因此要使用规范的HTML tag，这样可以减小黑客攻击的概率。
+							</p>
+						</blockquote>
+					</div>
+					<div class="three">
+						<strong>3.html标签对于空格键不太灵敏，那么我们想要有空格效果的时候应该怎么办？</strong>
+						<blockquote>
+							<p>一解决方式是在文字前插入"&amp;nbsp;"命令，等于插入一个空格键，把文字“挤”到中间去。一个"&amp;nbsp;"只移动一个空格，需要复制黏贴多个才能达到效果。
+							</p>
+						</blockquote>
+					</div>
+					<h2>练习题</h2>
+					<blockquote>
+						<p><strong>选择题</strong></p>
+						<div class="one">
+							<p><strong>1、以下哪一项是HTML常用的块状标签?</strong></p>
+							<p>A、&lt;span&gt;&nbsp;&nbsp;&nbsp;B、&lt;a&gt;&nbsp;&nbsp;&nbsp;C、&lt;br&gt;&nbsp;&nbsp;D、&lt;h1&gt;</p>
+						</div>
+						<div class="two">
+							<p><strong>2、以下标签用于在表单中构建复选框的是?</strong></p>
+							<p>A、&lt;input type="text"/&gt;&nbsp;&nbsp;B、&lt;input type="radio"/&gt;&nbsp;&nbsp;C、&lt;input type="checkbox"/&gt;&nbsp;&nbsp;D、 &lt;input type="password"/&gt;</p>
+						</div>
+						<div class="three">
+							<p><strong>3、下面关于外部样式表的说法错误的是?</strong></p>
+							<p>A、文件扩展名为 .cs&nbsp;&nbsp;B、外部样式表内容不需要使用&lt;style&gt;标签&nbsp;&nbsp;C、使用&lt;link&gt;标签引入外部样式&nbsp;&nbsp;D、 使用外部样式表可以使网站更加简洁，风格保持统一
+							</p>
+						</div>
+						<div class="four">
+							<p><strong>4、在HTML中有效，规范的注释声明是?</strong></p>
+							<p>A、//这是注释&nbsp;&nbsp;B、&lt;!--这是--注释--&gt;&nbsp;&nbsp;C、/*这是注释*/&nbsp;&nbsp;D、 &lt;!--这是注释--&gt;
+
+							</p>
+						<div class="five">
+							<p><strong>5、在HTML中，使用&lt;img&gt;标签插入图像，下列选项关于&lt;img&gt;的src属性说法正确的是?</strong></p>
+							<p>A、用来设置图片文件的格式&nbsp;&nbsp;B、用来设置图片文件所在的位置&nbsp;&nbsp;C、 用来设置鼠标指向图片时显示的文字&nbsp;&nbsp;D、用来设置图片周围显示的文字
+							</p>
+						</div>	
+						<div class="six">
+							<p><strong>6、在HTML中,若实现点击超链接时,弹出一个新的网页窗口,下列的哪一个选项符合要求?</strong></p>
+							<p>A、&lt;a href="right.html" target="_blank"&gt;节目&lt;/a&gt;&nbsp;&nbsp; <br /> B、&lt;a href="right.html" target="_self"&gt;节目&lt;/a&gt;&nbsp;&nbsp;<br /> C、&lt;a href="right.html" target="_parent"&gt;节目&lt;/a&gt;&nbsp;&nbsp;<br /> D、&lt;a href="right.html" target="_top"&gt;节目&lt;/a&gt;
+							</p>
+						</div>
+						<div class="seven">
+							<p><strong>7、在HTML中，将表单中input元素的type属性值设置为以下哪一项时，用于创建重置按钮?</strong></p>
+							<p>A、reset&nbsp;&nbsp;B、set&nbsp;&nbsp;C、button&nbsp;&nbsp;D、image
+							</p>
+						</div>
+						<div class="eight">
+							<p><strong>8、下列哪一个属性用于控制文本框最大字符数?</strong></p>
+							<p>A、&lt;input type="text" name="20"&gt;&nbsp;&nbsp; <br />
+								B、&lt;input type="text" name="20" maxlength="20"&gt;&nbsp;&nbsp; <br />
+								C、&lt;input type="text" name="20"  class="20&gt;&nbsp;&nbsp;<br />
+								D、&lt;input type="text" name="20" size="20"&gt;
+							</p>
+						</div>
+						<div class="nine">
+							<p><strong>9、在HTML中,关于表单提交方式说法错误的是?</strong></p>
+							<p>A、action属性用来设置表单的提交方式&nbsp;&nbsp; <br />
+								B、表单提交有get和post两种方式&nbsp;&nbsp; <br />
+								C、post比get方式安全&nbsp;&nbsp;<br />
+								D、post提交数据不会显示在地址栏，而get会显示
+							</p>
+						</div>
+						<div class="ten">
+							<p><strong>10、在HTML中，以下在表格页眉标签中，可以实现单元格内容加粗居中的是？</strong></p>
+							<p>A、&lt;thead&gt;&nbsp;&nbsp; 
+								B、&lt;tbody&gt;&nbsp;&nbsp; 
+								C、&lt;th&gt;&nbsp;&nbsp;
+								D、&lt;table&gt;
+							</p>
+						</div>
+					</blockquote>
+					<h2>习题讲解</h2>
+					<blockquote>
+						<p>选择题</p>
+						<div class="one">
+							<p>1、D</p>
+						</div>
+						<div class="two">
+							<p>2、C</p>
+							<div class="three">
+								<p>3、A</p>
+							</div>
+							<div class="four">
+								<p>4、D</p>
+							</div>
+							<div class="five">
+								<p>5、B</p>
+							</div>
+							<div class="six">
+								<p>6、A</p>
+								<p><strong>解析:</strong>&lt;a&gt;标签的 target属性规定在何处打开链接文档。有 4 个保留的目标名称用作特殊的文档重定向操作。【1】 _blank 浏览器总在一个新打开、未命名的窗口中载入目标文档。 【2】_self 这个目标的值对所有没有指定目标的
+									&lt;a&gt;标签是默认目标，它使得目标文档载入并显示在相同的框架或者窗口中作为源文档。这个目标是多余且不必要的，除非和文档标题
+										&lt;base&gt;标签中的 target 属性一起使用。【3】 _parent 这个目标使得文档载入父窗口或者包含来超链接引用的框架的框架集。如果这个引用是在窗口或者在顶级框架中，那么它与目标 _self 等效。【4】 _top 这个目标使得文档载入包含这个超链接的窗口，用 _top 目标将会清除所有被包含的框架并将文档载入整个浏览器窗口。</p>
+							</div>
+							<div class="seven">
+								<p>7、A</p>				
+							</div>
+							<div class="eight">
+								<p>8、B</p>				
+							</div>
+							<div class="nine">
+								<p>9、A</p>
+							</div>
+							<div class="ten">
+								<p>10、C</p>
+							</div>
+					</blockquote>
+				</article>
+				<!--返回首页按钮-->
+				<input class="btn" type="button" name="" id="" value="返回首页" />
+				<!--跳转到下一章节-->
+				<input class="btn1" type="button" name="" id="" value="下一章节" />
+				<!-- 返回顶部按钮 -->
+				<div class="backTop"></div>
+				</div>
+				</div>
+	</body>
+
+</html>
+<script type="text/javascript" src="../lib/toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="../lib/toc_conf.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+	$('.btn1').click(function() {
+		location.href = './css.html'
+	})
+</script>

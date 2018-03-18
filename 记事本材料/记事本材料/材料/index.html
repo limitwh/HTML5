@@ -1,0 +1,107 @@
+<!-- HTML5/hifive 编程技术能力水平考试（编程题） -->
+
+<!-- 记事本 html文件 -->
+
+<!-- 请输入你的姓名：            -->
+<!-- 请输入考试日期：            -->
+
+<!-- 可自行修改或追加代码，实现题目要求 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>记事本</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="lib/jQuery/jquery.min.js"></script>
+	<!-- 追加的库或文件请写在这里 -->
+
+
+</head>
+<body>
+	<div class="page">
+		<!-- 标题栏 -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						<img alt="NS-Solutions" src="icon/logo.png">
+					</a>
+				</div>
+				<h1 class="title">记事本</h1>
+			</div>
+		</nav>
+		<!-- 提交栏 -->
+		<div class="submitSection">
+			<input class="inputText" type="text" placeholder="待办事项">
+			<button class="btn btn-default submitBtn">提交</button>
+		</div>
+		<!-- 一览栏 -->
+		<div class="list">
+			<!-- 未完成列表 -->
+			<div id="notComplete" class="listArea">
+				<div class="listHeader">
+					<span class="listTitle">未完成</span>
+					（<span class="listCount"></span>件）
+					<div class="moreIcon">
+						<div class="icon leftUp">一</div>
+						<div class="icon rightUp">一</div>
+					</div>
+				</div>
+				<ul data-h5-loop-context="notePads" class="listContent">
+					<li class="notePadList">
+						<input type="hidden" data-h5-bind="id" />
+						<input type="checkbox" class="ui-check" data-h5-bind="attr(checked):checked"/>
+						<span data-h5-bind="content"></span>
+						<button class="btn btn-default cancelBtn">取消</button>
+					</li>
+				</ul>
+			</div>
+			<!-- 已完成列表 -->
+			<div id="complete" class="listArea">
+				<div class="listHeader">
+					<span class="listTitle">已完成</span>
+					（<span class="listCount"></span>件）
+					<div class="moreIcon">
+						<div class="icon leftUp">一</div>
+						<div class="icon rightUp">一</div>
+					</div>
+				</div>
+				<ul data-h5-loop-context="notePads" class="listContent">
+					<li class="notePadList">
+						<input type="hidden" data-h5-bind="id">
+						<input type="checkbox" class="ui-check" data-h5-bind="attr(checked):checked">
+						<span data-h5-bind="content"></span>
+
+					</li>
+				</ul>
+			</div>
+			<!-- 已取消列表 -->
+			<div id="cancel" class="listArea">
+				<div class="listHeader">
+					<span class="listTitle">已取消</span>
+					（<span class="listCount"></span>件）
+					<div class="moreIcon">
+						<div class="icon leftUp">一</div>
+						<div class="icon rightUp">一</div>
+					</div>
+				</div>
+				<ul data-h5-loop-context="notePads" class="listContent">
+					<li class="notePadList">
+						<input type="hidden" data-h5-bind="id" />
+						<input type="checkbox" class="ui-check" data-h5-bind="attr(checked):checked;style(visibility):hide;">
+						<span data-h5-bind="content;style(text-decoration):contentStyle" ></span>
+						<button class="btn btn-default recoverBtn">恢复</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="controllDiv">
+			<button class="btn btn-info saveBtn">保存</button>
+		</div>
+	</div>
+</body>
+</html>

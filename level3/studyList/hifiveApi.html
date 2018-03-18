@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>API运用</title>
+		<link href="../lib/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+	</head>
+
+	<body>
+		<div>
+			<div style='width:25%;'>
+				<ul id="tree" class="ztree" style='width:100%'>
+
+				</ul>
+			</div>
+			<div id='readme' style='width:70%;margin-left:20%;'>
+				<article class='markdown-body'>
+					<h1>hifive的api运用</h1>
+					<blockquote>
+						<p>hifive作为前端框架自然有很多api供我们开发者使用，本章节就hifive常用的api来进行说明讲解。</p>
+					</blockquote>
+					<h1>本地存储</h1>
+					<blockquote>
+						<p>如果你了解html5的话，相信你应该听说过本地存储的概念，通过本地存储（Local Storage），web 应用程序能够在用户浏览器中对数据进行本地的存储。
+在 HTML5 之前，应用程序数据只能存储在 cookie 中，包括每个服务器请求。本地存储则更安全，并且可在不影响网站性能的前提下将大量数据存储于本地。
+与 cookie 不同，存储限制要大得多（至少5MB），并且信息不会被传输到服务器。
+本地存储经由起源地（origin）（经由域和协议）。所有页面，从起源地，能够存储和访问相同的数据。</p>
+<p><strong>而hifive框架也有属于自己的本地存储的方法，接下来就来详细介绍一下这两种api的使用方法</strong>。</p>
+					</blockquote>
+					<p><strong>sessionStorage和localStorage的区别</strong></p>
+					<ul class="space">
+						<li><strong>1.localStorage和sessionStorage一样都是用来存储客户端临时信息的对象。</strong></li>
+						<li><strong>2.他们均只能存储字符串类型的对象（虽然规范中可以存储其他原生类型的对象，但是目前为止没有浏览器对其进行实现）。</strong></li>
+						<li><strong>3.localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。
+							sessionStorage生命周期为当前窗口或标签页，一旦窗口或标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了。</strong></li>
+						<li><strong>4.不同浏览器无法共享localStorage或sessionStorage中的信息。相同浏览器的不同页面间可以共享相同的 localStorage（页面属于相同域名和端口），但是不同页面或标签页间无法共享sessionStorage的信息。这里需要注意的是，页面及标 签页仅指顶级窗口，如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。</strong></li>
+					</ul>
+					<p><strong>hifive中的本地存储方法和html5中的方法其实是差不多的，接下来详细介绍一下hifive中关于本地存储的使用方法。</strong></p>
+					<h2>h5.api.storage.local</h2>
+					<table>
+						<thead>
+							<tr>
+								<td>方法名</td>
+								<td>参数</td>
+								<td>详解</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>clear</td>
+								<td></td>
+								<td>将保存在本地的所有键值对全部删除</td>
+							</tr>
+							<tr>
+								<td>each</td>
+								<td>callback</td>
+								<td>将当前保存在本地的数据对象，以键值对的形式取出来</td>
+							</tr>
+							<tr>
+								<td>getItem</td>
+								<td>key</td>
+								<td>通过制定的键，将值从本地中获取出来</td>
+							</tr>
+							<tr>
+								<td>getLength</td>
+								<td></td>
+								<td>获取保存在本地的键值对的数量</td>
+							</tr>
+							<tr>
+								<td>key</td>
+								<td>index</td>
+								<td>从本地存储中获取指定下标的键值</td>
+							</tr>
+							<tr>
+								<td>removeItem</td>
+								<td>key</td>
+								<td>通过制定的键，将数据从本地存储中删除</td>
+							</tr>
+							<tr>
+								<td>setItem</td>
+								<td>key,value</td>
+								<td>将数据值，保存到指定的键下面</td>
+							</tr>
+						</tbody>
+					</table>
+					<h2>h5.api.storage.session</h2>
+					<table>
+						<thead>
+							<tr>
+								<td>方法名</td>
+								<td>参数</td>
+								<td>详解</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>clear</td>
+								<td></td>
+								<td>将保存在本地的所有键值对全部删除</td>
+							</tr>
+							<tr>
+								<td>each</td>
+								<td>callback</td>
+								<td>将当前保存在本地的数据对象，以键值对的形式取出来</td>
+							</tr>
+							<tr>
+								<td>getItem</td>
+								<td>key</td>
+								<td>通过制定的键，将值从本地中获取出来</td>
+							</tr>
+							<tr>
+								<td>getLength</td>
+								<td></td>
+								<td>获取保存在本地的键值对的数量</td>
+							</tr>
+							<tr>
+								<td>key</td>
+								<td>index</td>
+								<td>从本地存储中获取指定下标的键值</td>
+							</tr>
+							<tr>
+								<td>removeItem</td>
+								<td>key</td>
+								<td>通过制定的键，将数据从本地存储中删除</td>
+							</tr>
+							<tr>
+								<td>setItem</td>
+								<td>key,value</td>
+								<td>将数据值，保存到指定的键下面</td>
+							</tr>
+						</tbody>
+					</table>
+					<blockquote>
+						<p>总结：h5.api.storage.local和h5.api.storage.session方法基本上上一样的，区别就在于存储大小和存储的时间上有差异。</p>
+					</blockquote>
+					<h1>地理位置</h1>
+					<h2>h5.dev.api.geo</h2>
+					<blockquote>
+						<p>由于hifive中获取地理使用的是谷歌数据，而在国内无法翻墙。因此使用这个api是有浏览器的限制的。目前来看只有在IE浏览器上可以使用</p>
+					</blockquote>
+					<table>
+						<thead>
+							<tr>
+								<td>方法</td>
+								<td>参数</td>
+								<td>详细讲解</td>
+								<td>返回值</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>isSupported</td>
+								<td></td>
+								<td>能否使用这个api的判断结果</td>
+								<td>true/false</td>
+							</tr>
+							<tr>
+								<td>getCurrentPosition</td>
+								<td>object(enableHighAccuracy,timeout,maximumAge)</td>
+								<td>获取当前位置的经度、纬度等等信息</td>
+								<td>promise对象</td>
+							</tr>
+							<tr>
+								<td>getDistance</td>
+								<td>lat1,lng1，lat2,lng2(经度和纬度),geoSystem(形式、式样)</td>
+								<td>获取两个地点之间的直线距离</td>
+								<td>promise对象</td>
+							</tr>
+							<tr>
+								<td>watchPosition</td>
+								<td>object(同getCurrentPosition的参数一致)</td>
+								<td>实时监控当前位置的经度和纬度</td>
+								<td>watchPositionPromise对象</td>
+							</tr>
+						</tbody>
+					</table>
+					<p><strong>实例</strong></p>
+					<pre><code>h5.api.geo
+.getCurrentPosition()
+.pipe(function(pos){
+	var dfd = that.deferred();
+   	var lat = pos.coords.latitude;
+   	var lng = pos.coords.longitude;
+})</code></pre>
+					<h1>表单验证</h1>
+					<h2>h5.ui.FormController</h2>
+					<table>
+						<thead>
+							<tr>
+								<td>方法</td>
+								<td>参数</td>
+								<td>详解</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>addOutPut</td>
+								<td>插件名的集合数组</td>
+								<td>插件的有效利用</td>
+							</tr>
+							<tr>
+								<td>addRule</td>
+								<td>规则的对象(object)</td>
+								<td>添加规则</td>
+							</tr>
+							<tr>
+								<td>clearValue()</td>
+								<td></td>
+								<td>将form的部件全部删除</td>
+							</tr>
+							<tr>
+								<td>disableRule()</td>
+								<td>属性名集合的数组</td>
+								<td>规则的无效化</td>
+							</tr>
+							<tr>
+								<td>enableRule()</td>
+								<td>属性名集合的数组</td>
+								<td>规则的有效化</td>
+							</tr>
+							<tr>
+								<td>getOutput()</td>
+								<td>插件名</td>
+								<td>从插件名中找到插件的实例</td>
+							</tr>
+							<tr>
+								<td>getValue()</td>
+								<td>指定情况下，指定名字事物的集合</td>
+								<td>获取form零件集合的对象</td>
+							</tr>
+							<tr>
+								<td>removeRule()</td>
+								<td>属性名集合的数组</td>
+								<td>删除规则</td>
+							</tr>
+							<tr>
+								<td>resetValidation()</td>
+								<td></td>
+								<td>将各插件的输出结果全部重置</td>
+							</tr>
+							<tr>
+								<td>setSetting()</td>
+								<td>设定的对象</td>
+								<td>进行表单控制器的设定</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>详细细节请参考以下链接： <br />
+						<a href="http://www.htmlhifive.com/ja/doc/h5.ui.FormController.html">http://www.htmlhifive.com/ja/doc/h5.ui.FormController.html</a> <br />
+						<a href="http://www.htmlhifive.com/conts/web/view/reference/validator">http://www.htmlhifive.com/conts/web/view/reference/validator</a>
+					</p>
+					<h2>h5.validation.FormValidationLogic</h2>
+					<p><strong>作用:为了对表单元素集成的对象进行验证的逻辑层。</strong></p>
+					<table>
+						<thead>
+							<tr>
+							<td>方法</td>
+							<td>参数</td>
+							<td>详解</td>
+						</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>addRule</td>
+								<td>规则的对象</td>
+								<td>追加验证的规则</td>
+							</tr>
+							<tr>
+								<td>disableRule</td>
+								<td>属性名集合的数组</td>
+								<td>规则的无效化</td>
+							</tr>
+							<tr>
+								<td>enableRule</td>
+								<td>属性名集合的数组</td>
+								<td>规则的有效化</td>
+							</tr>
+							<tr>
+								<td>removeRule</td>
+								<td>属性名集合的数组</td>
+								<td>删除规则</td>
+							</tr>
+							<tr>
+								<td>validate</td>
+								<td>有两个参数，第一个参数数验证目标的集合对象，第二个参数是基于第一个参数对象上的进行验证的键名的数组</td>
+								<td>对表单集合对象进行验证</td>
+							</tr>
+						</tbody>
+					</table>
+					<pre><code>实例：
+var formValidator = h5.core.logic(h5.validation.FormValidationLogic);
+formValidator.addRule({
+	// 把对象的属性名称作为键
+	userid: {
+		// 规则名: 符合规则的参数名。取不到参数的情况下，规则制定为true。参数为复数的情况下规程制定为数组。
+		required: true,
+		pattern: /ˆ[a-z|0-9]*$/,
+		size: [4, 10]
+	}
+});</code></pre>
+					<h1>画面表示</h1>
+					<h2>indicator</h2>
+					<blockquote>
+						<p>h5.ui.indicator()是用来表示画面出现之前的进度的，如下图所示。</p>
+					</blockquote>
+					<img src="../images/8.png"/>
+					<table>
+						<thead>
+							<tr>
+								<td>方法</td>
+								<td>详解</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>hide</td>
+								<td>将画面上正在展示的信息、进度等等隐藏</td>
+							</tr>
+							<tr>
+								<td>message</td>
+								<td>更新指定的信息</td>
+							</tr>
+							<tr>
+								<td>percent</td>
+								<td>更新指定的进程</td>
+							</tr>
+							<tr>
+								<td>show</td>
+								<td>显示画面上的信息、进度等等信息</td>
+							</tr>
+						</tbody>
+					</table>
+					<pre><code>实例
+h5.ui.indicator({
+	message:'正在获取当前位置......',
+	target:document
+})</code></pre>
+					<h1>异步请求</h1>
+					<h2>h5.ajax</h2>
+					<blockquote>
+						<p>进行http通信，和jQuery中的ajax方法一致，用于向后台请求数据</p>
+					</blockquote>
+					<pre><code>实例:
+h5.ajax({
+	url:'data.json',
+	cache:false,
+	method:'get',
+	success:function(data){
+		//请求成功后的数据
+	},
+	error:function(error){
+		//请求失败后的返回值
+	}
+})</code></pre>
+					<h1>移动页面顶端</h1>
+					<h2>h5.ui.scrollToTop()</h2>
+					<blockquote>
+						<p>h5.ui.scrollToTop()这个方法和jquery中的scroll()类似，都是将页面移动到页面顶端，很简单。</p>
+					</blockquote>
+					<h1>打印结果</h1>
+					<h2>h5.log</h2>
+					<table>
+						<thead>
+							<tr>
+								<td>方法</td>
+								<td>详解</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>configure</td>
+								<td>适用于h5.settings.log</td>
+							</tr>
+							<tr>
+								<td>createLogger</td>
+								<td>制作log</td>
+							</tr>
+						</tbody>
+					</table>
+					<pre><code>实例：
+var log=h5.log.createLogger('common')
+log.info('请输入您想要输入的信息')</code></pre>
+					<h1>异步处理</h1>
+					<blockquote>
+						为实现操作性和交互性更强的优质画面，我们必须用到异步处理。接下来，我们开始来学习异步处理吧。
+通过与服务器异步地交换数据，不但可以减少画面的迁移，而且还可以使得在客户端与服务器通信时，浏览器画面不会锁住。异步处理，是作为制作交互性强的优质的web应用所必须的技术手段。
+在这一章节，我们通过使用异步获取到商品列表的例子来对异步处理进行说明。
+					</blockquote>
+					<h3>实例</h3>
+					<blockquote>
+						<p>逻辑中记录了从服务器上取得数据的部分，控制器中记录了画面操作的部分。
+以下就是通过异步处理，获取到与画面选取相同的商品的详细信息的逻辑。</p>
+					</blockquote>
+					<pre><code>var itemSearchLogic = {  
+    /** 
+     * 逻辑名 
+     */  
+    __name: 'ItemSearchLogic',  
+   
+    /** 
+     * 取得商品（商品名和价格）列表
+     * 
+     * @param categoryId {Number} 种类ID 
+     * @returns 商品列表
+     */  
+    getItemList: function(categoryId) {  
+        var dfd = this.deferred();  
+        var result = null;  
+   
+        this._getItemData(categoryId).done(function(data) {  
+            result = $.map(data, function(obj) {  
+                obj.price = Math.floor(obj.price * 1.05);  
+                return obj;  
+            });  
+            dfd.resolve(result);  
+        }).fail(function(error) {  
+            dfd.reject(error.message);  
+        });  
+   
+        return dfd.promise();  
+    },  
+   
+    /** 
+     * カテゴリIDから商品(商品名と税抜価格)リストをサーバから取得する。 从服务器通过种类ID取得商品（商品名和商品价格）
+     * 
+     * @param categoryId {Number} 种类ID 
+     * @returns 商品列表 
+     */  
+    _getItemData: function(categoryId) {
+        // [ {"itemname":"hoge", "price": "1000"}, ...] 返回像这样的json对象
+        var promise = h5.ajax('./itemList', { 
+            type: 'GET',  
+            dataType: 'json',  
+            data: {
+              categoryId: categoryId  
+            }
+        });
+        return promise;
+    }  
+};</code></pre>
+					<ul>
+						<li>getItemList为共有方法。预想为被控制器所调用。 像以上代码，区分功能作用，分别编写了数据取得和处理数据的方法。通过这样的编写方式，当getItemList想要处理其他事情的时候，数据的取得方法（_getItemData）原封不动地保留，只需要重新编写处理数据的方法，修改变得十分容易。</li>
+						<li>通过getItemList作成了Deferred对象。之前的逻辑章节也说明过，通过逻辑化，框架会自动地添加deferred方法。</li>
+						<li>通过getItemList，返回了一个Promise对象。</li>
+						<li>_getItemData中的h5.ajax，是jQuery中Ajax通信用的方法。因为ajax方法的返回值是一个Promise对象，因此可以像this._getItemData(categoryId).done()一样，通过done方法取得异步处理的结果并进行处理。同时，也可以通过fail方法来取得错误的结果。</li>
+					</ul>
+					<p><strong>下面为控制器的部分。</strong></p>
+					<pre><code>var itemSearchController = {  
+    /** 
+     * 控制器名 
+     */  
+    __name: 'ItemSearchController',  
+    /** 
+     * 模板
+     */  
+    __templates: 'template.ejs',  
+    /** 
+     * 商品搜索逻辑 
+     */  
+    itemSearchLogic: itemSearchLogic,  
+    /** 
+     * 点击搜索按钮事件
+     */  
+    '#searchBtn click': function(context) {  
+        var $resultDiv = this.$find('#resultList');  
+        var that = this;  
+           
+        $resultDiv.empty();  
+           
+        // 获取用户输入的种类
+        var category = this.$find('#select-category option:selected').val();  
+   
+        this.itemSearchLogic.getItemList(category).done(function(resultData) {  
+            that.view.append($resultDiv, 'template1', {listData: resultData});  
+        }).fail(function(errMsg) {  
+            alert('获取失败' + errMsg);  
+        });  
+    }  
+};  
+   
+h5.core.controller('#container', itemSearchController); </code></pre>
+					<p>调用执行itemSearchLogic#getItemList。返回值是一个Promise对象。
+getItemList的返回值也是一个Promise。在done里的回调函数中描述了异步处理后的控制器处理。
+在这里，通过Ajax获取到的数据，与模板绑定后，作为一览画面显示出来。</p>
+						<p>hifive的异步处理控制中所用的Deferred是在jQuery的Deferred API的基础上构建的。
+基本上，jQuery的Deferred API所能提供的功能都能使用。</p>
+					<h2>deferred.notify, deferred.progress</h2>
+					<p>在刚才的实例中，追加了notify, progress的相关代码。</p>
+					<pre><code>var itemSearchLogic = {  
+    /** 
+     * 逻辑名 
+     */  
+    __name: 'ItemSearchLogic',  
+   
+    /** 
+     *  获取商品（商品名和价格）列表
+     * 
+     * @param categoryId {Number} 种类ID 
+     * @returns 商品列表 
+     */  
+    getItemList: function(categoryId) {  
+        var dfd = this.deferred();  
+        var result = null;  
+   
+        this._getItemData(categoryId).done(function(data) {  
+            result = $.map(data, function(obj) {  
+                dfd.notify(data.length);  
+                obj.price = Math.floor(obj.price * 1.05);  
+                return obj;  
+            });  
+            dfd.resolve(result);  
+        }).fail(function(error) {  
+            dfd.reject(error.message);  
+        });  
+   
+        return dfd.promise();  
+    },  
+   
+    /** 
+     * 从服务器通过种类ID获取商品（商品名和价格）
+     * 
+     * @param categoryId {Number} 种类ID 
+     * @returns 商品列表
+     */  
+    _getItemData: function(categoryId) {  
+        // [ {"itemname":"hoge", "price": "1000"}, ...] 返回像这样的json对象  
+        var promise = h5.ajax('./itemList', { 
+            type: 'GET',  
+            dataType: 'json',  
+            data: {
+              categoryId: categoryId  
+            }
+        });
+        return promise; 
+    }  
+};  </code></pre>
+					<p>_getItemData()的done回调函数中使用了deferred.notify。每件数据的含税金额完成时，都会通知画面当前完成的计算件数。
+虽然这次的例子中，因为计算处理简单，程序很快就结束了。但是当计算处理所花时间较长时，因为执行过程中可以不断通知用户，所以这个方法也十分有用。</p>
+					<h2>异步处理的合并</h2>
+					<p>使用h5.async.when()方法，程序会等待参数中的多个Promise对象都被resolve()后再接着执行。与$.when()的使用方法相同。参数中的Promise对象个数没有任何限制。但是，与$.when()不同的一点在于这里的参数可以为Promise对象的数组。</p>
+					<h3>实例</h3>
+					<p><strong>Logic的部分</strong></p>
+					<pre><code>// 使用getPlanList()函数调出3个异步处理方法。
+// _getDepart(), _getReturn(), _getHotel()这些是异步处理进行中返回回来的promise。
+// 三个异步结束后开始实行的处理放在getPlanList()的done的回调函数中。
+getPlanList: function() {
+	// 调出三个方法
+	// 全部的异步处理完成之后调出done回调函数。
+	return h5.async.when(this._getDepart(), this._getReturn(), this._getHotel());
+}</code></pre>
+					<p><strong>Controller中调用getPlanList的部分</strong></p>
+					<pre><code>this.planSearchLogic.getPlanList().done(
+	function(depatFlightList, returnFlightList, hotelList) {
+		that.log.debug("数据获取完毕");
+});</code></pre>
+					<h2>异步处理链</h2>
+					<p>在某个异步处理结束后，想要接着处理另一个异步处理时，可以使用then()。
+(jQuery1.8版本以下请使用pipe()。)</p>
+					<h2>commonFailHandler</h2>
+					<p>hifive中的Deferred对象与jQuery中的Deferred几乎相同。但是，hifive生成的Deferred对象可以设置一个共有的错误处理句柄(commonFailHandler)。
+当commonFailHandler未设定而异步请求失败时，将执行共有的fail回调函数。
+commonFailHandler是由h5.settings.commonFailHandler句柄（函数）所设定的。</p>
+					<pre><code>h5.settings.commonFailHandler = function(e){
+  // 共同的错误处理
+  alert('错误已发生');
+}
+
+h5.ajax('hoge').done(function(){
+  // 成功时的处理
+});
+// 异步处理失败的时候共同的处理
+
+h5.ajax('hoge').fail(function(){
+  // 失败时候的处理
+});
+//错误处理注册的情况下即使失败了也不实行错误处理
+
+h5.ajax('hoge').always(function(){
+  // 结束时候的处理（无论是成功或者失败）
+});
+</code></pre>
+<p>这个共有的fail句柄，就是hifive生成的Deferred对象中的共有fail句柄，例如h5.async.deferred()、h5.ajax()等生成的Deferred对象。但是不适用于通过$.Deferred()所生成的异步对象。</p>
+					<h1>AOP（切面）的应用</h1>
+					<p>hifive中可以在控制器与逻辑的方法间应用切面（AOP）。
+AOP的优点在于可以不用通过增加或改变代码来实现追加新的功能。
+例如，不去修改已有的方法去实现日志的输出，或者是实现时间的监测。</p>
+					<h2>切面（aspect）的使用方法</h2>
+					<p><strong>通过三个步骤在Hello World里应用切面。</strong></p>
+					<p>1.新建文件h5preinit.js，并先于h5.js读取。</p>
+					<pre><code>&lt;!-- 为了hifive的preinit事件的处理、先引入h5.js --&gt;  
+&lt;script src="h5preinit.js"&gt;&lt;/script&gt;  
+&lt;script src="h5.js"&gt;&lt;/script&gt;</code></pre>
+					<p>2.h5preinit的内容如下。</p>
+					<pre><code>$(document).bind('h5preinit', function() {  
+    var aspect = {  
+        target: 'HelloWorldController',  
+        interceptors: h5.core.interceptor.lapInterceptor,  
+        pointCut: '#btn click'  
+    };  
+   
+    h5.settings.aspects = [aspect];  
+});  </code></pre>
+					<p>• 切面（aspect）被指定为hifive中独有的h5preinit事件。之后再进行详细说明。</p>
+					<p>• 第2行到第6行定义了切面（aspect）。切面由目标、拦截器和pointcut组成。之后再分别进行详细说明。
+   目标指定了该拦截器适用于哪个控制器和逻辑中。在这里，适用于名字为“HelloWorldController”的控制器中。
+   在这里指定为检测hifive中的事件结束时间并在控制台中输出的拦截器。
+   pointcut则指定了该拦截器在什么事件中适用。在这里，适用于"#btn click"方法。</p>
+					<h3>运行确认</h3>
+					<p>F12打开开发者工具，点击"hello world!"按钮，控制台将显示实际运行时间。
+如果将包含了"h5preinit.js"的代码注释掉，控制台将不会再显示运行时间。</p>
+					
+					
+					<h1>API常见问题</h1>
+					<h2>逻辑中该如何决定API的使用密度？</h2>
+					<p>一个方法中一个异步处理。
+当使用了Deferred，不管是调整异步处理的顺序，或是不得不在追加其他的异步处理的情况发生时，都可以非常灵活地处理。</p>
+					<h2>异步处理的途中想要在画面上反映时怎么办？</h2>
+					<p>Deferred中有notify()方法，在最终完成通知前可以发送当前进度通知。
+所以，我们可以在使用Deferred中的notify()方法后，通过调用Promise的progress()的回调函数来实现画面的刷新。
+notify()方法可以取得对象，并作为参数传递给progress()中设置的回调函数，因此可以通过数据来实现画面的更新。</p>
+					<h2>处理完成花费时间过长或者数据量过多时怎么办？</h2>
+					<p>因为可以通过使用progress()等方法中途调用回调函数，所以在编写逻辑的API时可以在处理繁重的情况下，通过传递数组或是对象，在必要的时候用progress()进行相应处理。</p>
+					<h1>总结</h1>
+					<blockquote>
+						<p>在hifive框架中还有很多内置的api，在这里就不一一讲解了，只介绍几种常见的api。查看更多的api请参考官网</p>
+						<p><a href="http://www.htmlhifive.com/ja/doc/h5.html">点击查看更多hifive内置api</a></p>
+					</blockquote>
+				</article>
+								<!--返回首页按钮-->
+			<input class="btn" type="button" name="" id="" value="返回首页" />
+			<!--跳转到下一章节-->
+			<input class="btn1" type="button" name="" id="" value="下一章节" />
+			<!-- 返回顶部按钮 -->
+			<div class="backTop"></div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript" src="../lib/toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="../lib/toc_conf.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+	$('.btn1').click(function(){
+		location.href='./exercise8.html';
+	})
+</script>

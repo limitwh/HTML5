@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>综合练习4</title>
+		<link href="../lib/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+	</head>
+
+	<body>
+		<div>
+			<div style='width:25%;'>
+				<ul id="tree" class="ztree" style='width:100%'>
+
+				</ul>
+			</div>
+			<div id='readme' style='width:70%;margin-left:20%;'>
+				<article class='markdown-body'>
+					<h1>别踩白块</h1>
+					    <h2>演示</h2>
+					    <img src="../exercises/ex4/question/ex4.gif"/>
+						<h2>要求</h2>
+						<ul>
+							<li>使用jQuery实现本次练习</li>
+							<li>开始暂停按钮，控制游戏开始暂停</li>
+							<li>按下开始，方块滚动，每一行随机出现一个黑块</li>
+							<li>游戏过程中
+							<ul>
+								<li>点击黑块，黑块变白块，得分加一，显示于顶部</li>
+								<li>点击白块，游戏结束，并弹出得分情况</li>
+							</ul>
+							</li>
+							<li>按下暂停，方块停止滚动；游戏暂停期间点击方块无任何响应</li>
+							<li>※得分每增加十分，滚动速度加快，实现关卡难度增加</li>
+						</ul>
+					<p style="font-size: 22px;"><a href="../exercises/ex4/question/ex4.pdf">点击这里查看ex4详细资料</a></p>
+					<p style="font-size: 22px;"><a href="../exercises/ex4.rar">点击这里下载ex4的资料包</a></p>
+					<h1>练习讲解</h1>
+					<h2>html构建页面结构</h2>
+					<ul>
+						<li><strong>第一步:</strong>首先都是判断页面上有那几块模块组成，通过看上面的图片，我们大致可以了解到整个html页面可以分为[分数显示模块]，[游戏主体模块]，[控制模块]，[条件输入模块]。</li>
+						<li><strong>第二步:</strong>通过html构建每个模块，这里提醒一下，在html中对空格的使用不敏感，因此如果你想有空格显示的话，最好使用[&#38nbsp;]。</li>
+						<li><strong>第三步:</strong>因为游戏主体模块是随机动态生成的，因此可以通过javascript动态生成。</li>
+						<li><strong>第四步:</strong>控制模块是两个<code>button</code>标签，表示[开始]和[结束]。</li>
+						<li><strong>第五步:</strong>条件输入模块，输入的话设计到<code>input</code>标签，这里介绍一个新的标签<code>label</code>标签为 <code>input</code>标签定义标注（标记）。
+<code>label</code>标签不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。如果您在 <code>label</code> 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
+<code>label</code>标签的 for属性应当与相关元素的 id 属性相同。因此[输入每行块数]这几个字可以写入<code>label</code>标签中</li>
+					</ul>	
+					<h2>css添加样式美化</h2>
+					<ul>
+						<li>1、为了适应页面大小随着屏幕大小的变化而变化，我们可以采用百分比布局,百分比布局就是每个元素的宽高都用百分数来表示。</li>
+						<li>2、整个页面呈现居中显示的状态，元素分为块级元素和行内元素，行内元素居中可以使用"text-align:center"，块级元素居中，可以使用"margin:0 auto",提醒一下，如果元素浮动或者定位了，就不能用"margin" <br />
+						<strong>让元素居中的更多方式:</strong><br />
+						<a href="http://blog.csdn.net/ruoyiqing/article/details/38959381">http://blog.csdn.net/ruoyiqing/article/details/38959381</a><br />
+						<a href="http://blog.csdn.net/lxcao/article/details/52670724">http://blog.csdn.net/lxcao/article/details/52670724</a>
+						</li>
+						<li>3、当想要设置元素宽高而又不改变元素内容的大小的时候，可以使用"box-sizing:border-box"怪异盒模型，这样无论怎么设置盒子外边距，内边距都不会影响盒子本身的宽高。</li>
+						<li>4、游戏主体模块由于是通过js动态添加的，因此可以先将样式设置好，然后在js中添加类名就可以了</li>
+					</ul>
+					<h2>javascript增加动态效果</h2>
+					<ul>
+						<li><strong>第一步:</strong>找对象，将需要使用到的对象找到，并用变量接收，为了语义化，使用的变量最好使用"$+变量名"，还要符合代码规范。</li>
+						<li><strong>第二步:</strong>根据业务需求编写代码。<br />
+							<ul>
+								<li><strong>1、开始暂停按钮，控制游戏开始暂停</strong><br />
+								可以设置一个初始状态值用来判断当前是开始还是暂停，只需要注册点击事件，然后分别编写相应的代码就可以了。
+								不过这里需要注意一点，在设置定时器的时候会有一个弊端，你连续按开始按钮后，再按关闭就停不下来了，这是因为没有设置<strong>节流阀</strong>
+								所谓节流阀就相当于一个开关的作用，是当函数中事件被频繁调用的时候，节流函数每次执行时都会检查上次执行的时间，来保证只有距离上次执行超过一定时间，才会真正执行内部包裹的回调函数。由此来避免一种重量级的函数（如重绘或者dom操作）被频繁调用而导致产生性能问题。<br />
+								<a href="http://www.cnblogs.com/zztt/p/4098657.html">http://www.cnblogs.com/zztt/p/4098657.html</a><br />
+								</li>
+								<li><strong>2、按下开始，方块滚动，每一行随机出现一个黑块</strong><br />
+								首先要生产每一行的方块，并根据每一行总块数随机生产三分之一的黑色方块，并使用Math.random()方法设置随机位置。根据每一行的行数获得每个小方块的宽度。
+								判断是黑色的方块就给它设置黑色的颜色，否则白色。<br />
+								其次，滚动的方法其实就是改变每一行的距离顶部的高度，然后通过定时器让它不停的改变。
+								</li>
+								<li><strong>
+									3、点击黑块，黑块变白块，得分加一，显示于顶部<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;点击白块，游戏结束，并弹出得分情况
+								</strong><br />
+									设置一个变量，判断点击的是黑色还是白色，黑色的话变量加加，白色的话弹出提示框，然后用location.reload()重置。
+								</li>
+								<li><strong>4、按下暂停，方块停止滚动；游戏暂停期间点击方块无任何响应</strong><br />
+							关闭定时器，将状态改变为暂停。
+						</li>
+							</ul>
+						</li>
+						<li><strong>第三步:</strong>使用开发者工具测试</li>
+					</ul>
+					<p style="font-size: 22px;"><a href="../answers/ex4.rar">点击这里获取本次练习答案</a>
+				</article>
+					<!--返回首页按钮-->
+			<input class="btn" type="button" name="" id="" value="返回首页" />
+			<!--跳转到下一章节-->
+			<input class="btn1" type="button" name="" id="" value="下一章节" />
+			<!-- 返回顶部按钮 -->
+				<div class="backTop"></div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript" src="../lib/toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="../lib/toc_conf.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+	$('.btn1').click(function(){
+		location.href='./CSS3.html';
+	})
+</script>

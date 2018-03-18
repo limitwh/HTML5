@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>hifive数据模型篇</title>
+		<link href="../lib/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+	</head>
+
+	<body>
+		<div>
+			<div style='width:25%;'>
+				<ul id="tree" class="ztree" style='width:100%'>
+
+				</ul>
+			</div>
+			<div id='readme' style='width:70%;margin-left:20%;'>
+				<article class='markdown-body'>
+					<h1>数据模型概述</h1>
+					<h2>功能</h2>
+					<p>在这个教程中，我们将学习hifive用于支持数据层的数据模型的结构构造。
+如果使用了数据模型结构，对于那些不含有预先明确了类型的JavaScript程序来说，可以实现：「检查带入值（预想）的"类型"・（值的范围等）"规则"」、 「属性值变更的检测(发出事件)」、「检查是否带入了事先未定义的属性」等等。
+并且，如果同时组合使用ver.1.1版本追加的数据绑定功能，
+改变数据模型时可以在视图中自动反映出来。
+通过这些功能，可以更专注于只在JavaScript代码中对数据进行操作，
+从而弱化了对视图操作的依赖。</p>
+					<h1>数据模型使用方法</h1>
+					<h2>概述</h2>
+					<p>hifive的数据模型结构，有如下的三层结构组成。
+每个dataManager管理多个dataModel，其中的每个dataModel中包含多个dataItem。<br />
+用数据库来类比的话，我们想成这样：</p>
+					<ul class="space">
+						<li>•	dataManager：数据库（一个实例）</li>
+						<li>•	dataModel：表</li>
+						<li>•	dataItem：每条记录</li>
+					</ul>
+					<img src="../images/dataModelER.png"/>
+					<p>使用数据模型结构的基本流程为：
+　   生成dataManager → 生成dataModel → 生成dataItem</p>
+					<h2>dataManager</h2>
+					<p>使用h5.core.data.createManager方法可生成dataManager。</p>
+					<pre><code>var manager = h5.core.data.createManager('SampleManager', 'sample');</code></pre>
+					<p>createManager返回生成的dataManager。
+第一个参数指定了dataManager的名字，必须传入的参数。
+第二个参数指定了dataManager所在的命名空间。dataManager公开在这个被指定的命名空间中。第二个参数省略时，manager被公开在全局环境下。
+以上面的代码为例，dataManager作为sample.Maneger公开。实例与manager相同。</p>
+					<h2>dataModel</h2>
+					<h3>dataModel的生成</h3>
+					<p>dataModel是通过使用dataManager的createModel方法来生成的。
+createMode()中传入的参数是数据模型描述器对象。
+描述器定义了这个数据模型中的各个dataItem包含哪些属性，以及属性的类型和检查规则。
+关于描述器的具体写法，我们在下一章节进行说明。</p>
+					<pre><code>var model = manager.createModel({
+    name: 'SampleModel',
+    schema: {
+        id: {
+            id: true
+        },
+        name: {
+            type: 'string'
+        },
+        point: {
+            type: 'integer',
+            defaultValue: 0
+        }
+    }
+});</code></pre>
+					<h3>dataModel的删除</h3>
+					<p>使用dropModel方法，可以从dataManager中删除dataModel。</p>
+					<pre><code>// 指定数据模型名为参数
+manager.dropModel('SampleModel');</code></pre>
+					<h2>dataItem</h2>
+					<h3>dataItem的生成</h3>
+					<p>使用dataModel中的create方法，可以生成dataItem。</p>
+					<pre><code>var item = model.create({    // model为实现定义的数据 模型
+    id: '001',
+    name: '田中太郎',
+    point: 50
+});
+
+item.get('id') === '001'         // true
+item.get('name') === '田中太郎'  // true
+item.get('point') === 50         // true</code></pre>
+					<p>返回值为dataItem的实例。参数所指定的对象的值将全部存储在实例中。
+并且，省略了值的属性将被赋予默认值。
+若设定了defaultValue的值时默认值就为该值，未设定时数组的默认值则为一个空的ObservableArray对象，普通对象的默认值为null。但是名为"ID"的属性必须进行初始化。</p>
+					<pre><code>var item2 = model.create({
+    id: '002'    // 因为是作为id指定的属性，不能省略
+});
+
+item2.get('id') === '002'       // true
+item2.get('name') === null      // true
+item2.get('point') === null     // true</code></pre>
+					<p>给create方法传入对象数组时，会同时生成多个dataItem。</p>
+					<pre><code>var items = model.create([{ id: '0001' },{ id: '0002' }, { id: '0003' }]);
+// 返回值为生成的dataItem元素组合而成的数组</code></pre>
+					<h3>dataItem的取得</h3>
+					<p>使用get方法，可以从dataModel中获取已生成的dataItem。参数指定为想要获取的dataItem的ID值。</p>
+					<pre><code>// 取得id为'001'的dataItem
+var item = model.get('001');
+
+// 取得id为'001'、'002'的dataItem
+// 返回值为dataItem组合的数组
+var items = model.get(['001', '002']);</code></pre>
+					<h3>dataItem的删除</h3>
+					<p>使用remove方法，可以从dataModel中删除掉dataItem。参数指定为想要删除的dataItem的ID值。</p>
+					<pre><code>// 删除id为'001'的dataItem
+// 返回值为被删除的dataItem
+var removedItem = model.remove('001');
+
+// 删除id为'001'、'002'、'003'的dataItem
+// 返回值为被删除dataItem的数组
+var removedItems = model.remove(['0001', '0002', '0003']);</code></pre>
+					<h3>dataItem的获取</h3>
+					<p>使用get方法，可以从dataItem中取得属性值。参数指定为想要获取的属性名。如果不设定参数的话，将取得一个包含所有属性的对象。该对象为属性的键值对。</p>
+					<pre><code>var item = model.create({
+    id: '001',
+    value1: 'AAA',
+    value2: 'BBB'
+});
+
+item.get('id') === '001';        // true
+item.get('value1') === 'AAA';    // true
+item.get('value2') === 'BBB';    // true
+
+// 没有参数的情况下使用get
+var itemValue = item.get();
+
+itemValue.id === '001';          // true
+itemValue.value1 === 'AAA';      // true
+itemValue.value2 === 'BBB';      // true
+
+itemValue.value1 = 'CCC';
+
+item.get('value1');              // 'AAA'</code></pre>
+					<h3>dataItem中设置</h3>
+					<p>使用set方法，可以向dataItem中设定值。</p>
+					<pre><code>// model的作成
+var model = manager.createModel({
+    name: 'SampleModel',
+    schema: {
+        id: {
+            id: true
+        },
+        val1: null,
+        val2: null,
+        val3: null,
+        ary: {
+            type: 'any[]'
+        }
+    }
+});
+var item = model.create({
+    id: '001',
+    val1: 'v1',
+    val2: 'v2',
+    val3: 'v3'
+});
+
+item.set('val1', 'new value'); // 第一个参数为属性名，第二个参数为设置的值
+
+item.set({              // 使用对象的形式统一设置可能的值
+    val2: 'vv22',
+    val3: 'vv33'
+});
+
+item.set('ary', ['A', 'B']);  // 设置数组</code></pre>
+					<p>type指定为数组的属性（如上面例子中的ary），必须用ObervableArray进行初始化设定（这个实例不能被更改）。
+对数组里的元素进行操作时，请使用get和set方法。
+例：
+item.get('ary').set(0, 'a'); // ○ 
+// item.get('ary')[0] = 'a'; // 不能使用这个书写方法
+同时，ObservableArray中也包含了和普通数组相同方法（splice、pop、push等）。
+详细请参照ObservableArray的API。</p>
+					<h1>描述符的写法</h1>			
+					<h2>概要</h2>
+					<p>在hifive的数据模型里，描述符（descriptor）是用来描述数据模型名称、该数据模型中的各个dataItem中包含的属性，并且规定了属性的类型和校验规则。
+类比于数据库和数据库中的Schema（数据库对象的集合，一个用户一般对应一个schema）。</p>
+					<h2>具体写法</h2>
+					描述符是以对象的形式来定义的（之后我们将统一称为描述符对象）。
+在数据模型生成时，描述符对象作为参数传入。
+一个描述符可以用来描述一个数据模型。 <br />
+描述符对象的写法如下所示：
+					<pre><code>var descriptor = {
+    name: 'SampleDataModel',       // dataModel的名字（必须）
+    schema: {...}                  // dataItem的属性定义（构造对象、必须）
+};
+
+//根据描述符制作数据模型
+var model = sample.dataManager.createModel(descriptor);</code></pre>
+					<p>在这个数据模型中的dataItem的属性定义位于schema对象内。</p>
+					<h2>schema的写法</h2>
+					<p>schema对象中，定义了属于该数据模型的各个dataItem的属性。
+如上面的例子所示，schema对象在描述符对象中被定义为schema属性。 <br />
+schema对象的定义写法如下所示：</p>
+					<pre><code>schema: {
+    属性名1: {
+        属性1-1: 值1-1,
+        属性1-2: 值1-2,
+        ...
+    },
+    属性名2: {
+        属性2-1: 值2-1,
+        ...
+    }
+    ...
+}</code></pre>
+					<p><strong>例：</strong></p>
+					<pre><code>schema: {
+    // 为了识别dataItem的ID
+    id: { id: true },  //id:关于true的含义后面再讲解
+
+    // 名前
+    name: null,
+
+    // 地址
+    address: null
+}</code></pre>
+					<h3>属性设定</h3>
+					<p>在hifive的数据模型中，如数据库中的主键一样，每个dataItem都有唯一的一个属性用来标示该对象。
+这个属性在schema中被指定为id: true。
+对于schema对象来说，必须要拥有一个属性被指定为{id: true}。
+被指定的该属性，则成为了标识该dataItem的ID了。
+不同的dataItem实例中，这个属性值一定不能相同。</p>
+					<h3>其他性质</h3>
+					<p><strong>用null来指定某个属性时，该属性值的设置将不会受到任何规则所制约。</strong></p>
+					<p><strong>type定义</strong></p>
+					<p>我们也可以通过字符串来规定属性的类型。省略时，该属性的值可被定义为任何类型。
+类型可以指定为字符串、数字、bool型等等。
+
+指定了type的属性，该属性不能被设为该类型以外的值。
+
+有个例外，类型被指定为数字（integer或者是number）的属性，其值可以被设为可转换成数字的字符串。
+因为当值被设为字符串时，可以自动的进行类型转换变为数字。
+这是为了在从视图（如input标签等）取得值时而不需要再进行类型转换而添加的功能。 <br />
+
+指定了类型的例子：</p>
+					<pre><code>var productSchema = {
+    // 商品ID
+    id: {id:true},
+ 
+    // 商品名
+    name: {
+        type: 'string'
+    },
+
+    // 単価
+    unitPrice: {
+        type: 'integer'
+    },
+ 
+    // 数量
+    amount: {
+        type: 'integer'
+    }
+};</code></pre>
+					<p><strong>自动进行类型转换的例子：</strong></p>
+					<pre><code>var model = manager.createModel({
+    name: 'ProductModel',
+    schema: productSchema        // 上面描述的schema对象
+});
+
+var item = model.create({
+    id: '001',
+    name: '圆珠笔',
+    unitPrice: 100,
+    amount: 5000
+});
+
+// 不能设置和指定类型不同的值
+item.set('amount', 'abc');       // 生成错误</code></pre>
+					<p><strong>类型指定为数组时</strong></p>
+					<p>属性的类型也可以声明为数组。
+指定为数组的时候，需要在类型名结尾添加[]。如"string[]", "any[]"。
+若属性被声明为数组时，该属性（如下面例子中的属性list）在生成DataItem实例的时候会被自动设置为ObservableArray的实例。该实例不可被更改。
+在使用DataItem的set方法对数组进行更改时，实际上进行的是深拷贝。</p>
+					<pre><code>var descriptor = {
+    name: '',
+    schema: {
+        id: {
+            id: true
+        },
+        list: {
+            type: 'any[]'
+        }
+    }
+};
+
+var model = manager.createModel(descriptor);
+
+var item = model.create({
+    id: '001'
+});
+
+var obsAry = item.get('list');   // [] 初始值为空数组
+
+// 设置数组
+var array = ['a', 'b', 'c'];
+item.set('list', array);
+
+item.get('list');            // ['a', 'b', 'c'] 的数组
+
+item.get('list') !== array;  // true, 不是数组的例子
+
+item.get('list') === obsAry; // true, 即使值改变了dataItem仍然是数组
+
+item.get('list').push('d');
+
+item.get('list');  // ['a', 'b', 'c', 'd'] 的数组</code></pre>
+					<p><strong>depend</strong></p>
+					<p>depend被定义为数据模型中属性的值（计算值）所依赖的对象。
+包含depend属性的属性的值将不能被设置。（也不可设置defaultValue）
+depend中包含了两个属性：与之相关联的属性，对关联属性值进行运算的函数。
+与之关联的属性的值变化的时，会自动调用该函数进行值的计算，最后完成属性最终值的设定。</p>
+					<pre><code>var productSchema = {
+    // 商品ID
+    id: {id:true},
+ 
+    // 商品名
+    name: {
+        type: 'string'
+    },
+
+    // 单价
+    unitPrice: {
+        type: 'integer'
+    },
+ 
+    // 数量
+    amount: {
+        type: 'integer'
+    },
+
+    // 单价*数量=总价
+    totalPrice: {
+        type: 'integer',
+        depend: {
+            on: ['unitPrice', 'amount'], // 同一个数据模型内，记录依赖的属性
+            calc: function(ev){
+                // 参(ev)为改变的对象
+                // this指代dataItem的实例
+
+                return this.get('unitPrice') * this.get('amount');
+            }
+        }
+    },
+
+    // 信息："(商品)は(单价×数量)円分あります"
+    message: {
+        type: 'string',
+        depend: {
+           on: ['name', 'totalPrice'],  
+           calc: function(ev) {
+               return this.get('name') + 'は' + this.get('totalPrice') + '円分あります';
+           }
+        }
+    }
+};
+
+// 数据模型的作成
+var model = manager.createModel({
+    name: 'ProductModel',
+    schema: productSchema
+});
+
+// item的作成
+var item = model.create({
+    id: '001',
+    name: '笔记'
+});
+
+item.set({
+    unitPrice: 120,
+    amount: 1000
+});
+
+item.get('totalPrice');  // 1200000
+item.get('message');       // "笔记为120000日元"</code></pre>
+					<h1>更新和绑定</h1>
+					<h2>概述</h2>
+					<p>hifive的数据模型结构中，当给每一个dataItem赋值时，会按照事先定义的schema来对值进行类型以及定义规则的检查。
+并且，可以通过设置事件监听器来对赋值操作来进行监听。
+下面，我们将对dataItem变更机制和更新时发生的事件进行说明。</p>
+					<h2>dataItem的更新</h2>
+					<p>当对dataItem的值进行更新（调用dataItem.set()方法）时，将会进行下面的处理。</p>
+					<ul class="space">
+						<li>1.对值进行隐式的类型转换（在数据模型规定的范围内）</li>
+						<li>2.值的类型检查</li>
+						<li>3.定义了depend的属性值的更新</li>
+						<li>4.变更事件的发生</li>
+					</ul>
+					<p>dataItem的更新处理，是指对由create方法已创建的dataItem的值的变更，可以调用set方法来执行。</p>
+					<p><strong>类型检查的例子：</strong></p>
+					<pre><code>// item的作成
+var item = model.create({
+    id: '001',
+    val: 100    // type:'number'指定的属性
+});
+
+// dataItem的item的val属性的 值更改为123
+// 从字符串类型向数据类型自动转换
+item.set('val', '123');
+
+item.get('val') === 123;  // true（从字符串类型自动转化为数字类型）
+
+try {
+    item.set('val', 'ABC');
+} catch (e) {
+    // 发生错误时的处理
+    alert('引入了不正确的值');
+}</code></pre>
+					<h2>事件概要</h2>
+					<p>当对dataItem进行更新时，从dataItem、dataModel到dataManager都会有各自的事件产生，然后事先设置好的事件监听器执行相应的程序。
+通常一个dataItem值变化时，马上会有相应的一个事件产生。但是如果使用接下来将说明的beginUpdate()和endUpdate()方法， 为多个dataItem值的变化定义成一个事件。
+各个事件监听程序被调用的时候，事件对象会作为参数被传入。
+通过这个参数，可以获取到dataItem实例以及属性在变化前后等信息。
+
+</p>
+					<h2>dataItem的change事件</h2>
+					<p>dataItem的值变化时，change事件产生。
+使用dataItem的addEventListener方法，可以为change事件设置事件监听程序。
+此时，如果dataItem值变化时，这个设置的change事件的监听程序将被执行。</p>
+					<p><strong>事件监听程序的例子：	</strong></p>
+					<pre><code>item = model.create({
+    id: '001',
+    val: 1
+});
+
+var listener = function(ev){
+    alert('change!');
+};
+item.addEventListener('change', listener);
+
+item.set('val',2);    // 表示「change!」
+
+model.create({
+    id: '001',      
+    val: 3
+});                   // 表示「change!」
+
+item.set('val', 3);   // 因为设置了相同的值、事件没有发生（没有出现alert）</code></pre>
+					<h2>dataModel的change事件</h2>
+					<p>当对dataItem进行添加、删除和更改的操作时，该dataItem所属的dataModel会产生itemsChange事件。同样，我们可以通过addEventListener方法来设置该事件的监听程序。
+执行顺序：dataItem的change事件，然后才是dataModel的itemsChange事件。</p>
+					<pre><code>// itemsChange追加事件处理器
+var listener = function(ev) {
+    alert('itemsChange!');
+}
+
+model.addEventListener('itemsChange', listener);   //model是DataModel的实例
+
+// dataItem的生成
+var item = model.create({
+    id: '001',
+    val: 1
+});                      // 表示「itemsChange!」
+
+// 改变item.val的值
+item.set('val', 2);      // 表示「itemsChange!」
+
+// 给item追加事件处理器
+item.addEventListener('change', function(ev) {
+    alert('change!');
+});
+
+item.set('val', 3);      // 表示「change!」 → 「itemsChange!」的顺序
+
+// 删除item
+model.remove('001');     // 表示「itemsChange!」</code></pre>
+					<h2>dataManager的itemsChange事件</h2>
+					<p>在dataModel的itemsChange事件发生后，该dataModel所属的dataManager也会产生相应的ItemsChange事件。
+因此，事件的发生顺序如下：</p>
+					<p><strong>dataItem的change事件 ⇒ dataModel的itemsChange事件 ⇒ dataManager的itemsChange事件 </strong></p>
+					<p>同样，我们也可以通过addEventListener方法，为dataManager的itemsChange事件设置事件监听程序。</p>
+					<pre><code>function listener(ev) {
+    // 参数为dataModelManager的itemChanger的事件对象
+    // this指这个dataModelManager
+}
+manager.addEventListener('itemsChange', listener);</code></pre>
+				</article>
+								<!--返回首页按钮-->
+			<input class="btn" type="button" name="" id="" value="返回首页" />
+			<!--跳转到下一章节-->
+			<input class="btn1" type="button" name="" id="" value="下一章节" />
+			<!-- 返回顶部按钮 -->
+			<div class="backTop"></div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript" src="../lib/toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="../lib/toc_conf.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+	$('.btn1').click(function(){
+		location.href='./dataBind.html';
+	})
+</script>

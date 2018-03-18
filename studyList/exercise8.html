@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>我的电影</title>
+		<link href="../lib/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+	</head>
+
+	<body>
+		<div>
+			<div style='width:25%;'>
+				<ul id="tree" class="ztree" style='width:100%'>
+
+				</ul>
+			</div>
+			<div id='readme' style='width:70%;margin-left:20%;'>
+				<article class='markdown-body'>
+					<h1>我的电影</h1>
+						<h2>演示</h2>
+						<img src="../exercises/ex8/question/ex8.gif"/>
+						<h2>要求</h2>
+						<ul>
+							<li>页面布局:标题栏、热门电影、最新电影、top电影</li>
+							<li>点击标题导航栏中选项，内容栏切换到相应的内容</li>
+							<li>Controller中控制DOM</li>
+							<li>Logic中提供数据获取以及计算的方法</li>
+							<li>Model中创建电影数据模型</li>
+							<li>iew通过hifive中的数据绑定功能更新</li>
+						</ul>
+						<p style="font-size: 22px;"><a href="../exercises/ex8/question/ex8.pdf">点击这里查看ex8详细资料</a></p>
+						<p style="font-size: 22px;"><a href="../exercises/ex8.rar">点击这里下载ex8的资料包</a></p>
+					<h1>练习讲解</h1>
+					<h2>html构建页面结构</h2>
+						<ul>
+							<li><strong>第一步：</strong>首先查看一下页面分为哪几块模块，分别为头部，导航栏部分，电影列表展示部分和底部箭头部分。</li>
+							<li><strong>第二步：</strong>导航栏部分可以使用<code>ul</code>和<code>li</code>制作。</li>
+							<li><strong>第三步：</strong>电影列表分为三个部分，分别是热门电影、近期上映、top电影。分别使用hifive的数据绑定功能data.h5.bind将属性和html相绑定。</li>
+							<li><strong>第四步：</strong>页面底部的小箭头可以使用div伪元素来制作。</li>
+						</ul>
+					<h2>css添加样式美化</h2>
+						<ul>
+							<li><strong>第一步：</strong>头部文字居中使用<code>text-align:center;</code></li>
+							<li><strong>第二步：</strong>点击导航栏出现小三角，小三角形可以使用<code>border</code>来制作，设置一个<code>div</code>宽高都为0，只设置border。<a href="https://www.cnblogs.com/dolphinX/p/4068894.html">点击查看小三角形的制作方法。</a></li>
+							<li><strong>第三步：</strong>点击加载更多后出现的loading样式，<a href="http://www.iteye.com/topic/1136982">点击查看loading图形。</a></li>
+							<li><strong>第四步：</strong>底部的返回顶部的图形可以使用伪元素。</li>
+						</ul>
+					<h2>javascript增加动态效果</h2>
+					<blockquote>
+						<p>在本次的练习中使用了hifive前端框架，根据需求要求根据电影的属性，设置数据模型，在逻辑层logic中请求电影数据。在页面控制器中控制整个页面的DOM元素。</p>
+						<ul>
+							<li><strong>第一步：</strong>使用hifive的数据模型，根据电影的属性设置每部电影的数据属性模型。</li>
+							<li><strong>第二步：</strong>在逻辑层中通过h5.ajax向服务器获取数据，并在逻辑层中处理数据。</li>
+							<li><strong>第三步：</strong>在页面控制器中根据功能对DOM进行操作。并对逻辑层中请求回来的数据进行操作。</li>
+						</ul>
+					</blockquote>
+					<p style="font-size: 22px;">
+						<a href="../answers/ex8.rar">点击这里查看ex8的答案</a>
+					</p>
+				</article>
+				<!--返回首页按钮-->
+			<input class="btn" type="button" name="" id="" value="返回首页" />
+			<!-- 返回顶部按钮 -->
+			<div class="backTop"></div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript" src="../lib/toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="../lib/toc_conf.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+	$('.btn1').click(function(){
+		location.href='./javascript(进阶).html';
+	})
+</script>

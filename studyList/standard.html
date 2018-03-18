@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>前端编程规范</title>
+		<link href="../lib/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	</head>
+
+	<body>
+		<div>
+			<div style='width:25%;'>
+				<ul id="tree" class="ztree" style='width:100%'>
+
+				</ul>
+			</div>
+			<div id='readme' style='width:70%;margin-left:20%;'>
+				<article class='markdown-body'>
+					<h1>NSSOL前端项目编程规范</h1>
+					<blockquote>
+						<p>（本规范节选并翻译了NS Solution社内公约中被认为“必须遵守”的部分） <br />
+详细请参阅：《クライアントサイド開発コーディング規約(HTML_CSS_JavaScript) 》</p>
+					</blockquote>
+					<h2>目的</h2>
+					<blockquote>
+						<p>1、开发系统，书写代码，最低的要求是完成功能的实现。 但最好的代码应该是逻辑清晰，并包含适当的注释。 不仅自己能看得懂，其它程序员也能很容易明白。
+						</p>
+						<p>2、可维护的代码 可维护的代码使得后续的开发和代码的重用性变得简单，在 整体的项目开发中达到成本的节约。 前端开发也是如此，因此制定一系列的规范。
+						</p>
+					</blockquote>
+					<h2>基础规范</h2>
+					<blockquote>
+						<p>html、CSS、JavaScript的文件分离<br /> html：视图结构内容
+							<br /> CSS： 视图样式显示<br /> JavaScript：用户交互动作实现
+						</p>
+					</blockquote>
+					<h2>hifive框架规范</h2>
+					<blockquote>
+						<p>
+							MVC：将数据、视图、控制器的代码分离<br /> Controller：控制交互和视图的改变，不能计算等逻辑处理。
+							<br /> Logic：负责给Controller提供逻辑计算、数据加载等方法。
+							<br /> View：负责视图的内容（HTML或者单独的ejs模板）
+							<br /> Model：负责数据的管理（数据的属性类型等）
+
+						</p>
+					</blockquote>
+					<h2>代码规范</h2>
+
+					<ul>
+						<li><strong>命名规范:变量常量函数的命名要有意义，语义化</strong><br />
+							<ul>
+								<li>变量：<br /> UserID、UserPassword （驼峰式命名）
+								</li>
+								<li>常量：<br /> MAX_COUNT（全部大写，单词用下划线分割）
+								</li>
+								<li>函数：<br /> getUserID（）、setPassword（）、canRead（）
+								</li>
+							</ul>
+						</li>
+						<li><strong>注释规范:单行注释（//）</strong><br />
+							<ul>
+								<li><strong>单独一行</strong>： //(双斜线)与注释文字之间保留一个空格<br />
+									<pre><code>例：
+// 设置标题
+setTitle();</code></pre>
+								</li>
+								<li><strong>在代码后面添加注释</strong>：//(双斜线)与代码之间保留一个空格，并且//(双斜线)与注释文字之间保留一个空格。<br />
+									<pre><code>例：
+var maxCount = 10; // 设置最大量</code></pre>
+								</li>
+								<li><strong>注释代码</strong>：//(双斜线)与代码之间保留一个空格。<br />
+									<pre><code>例：
+// setName(); // 注释代码</code></pre>
+								</li>
+							</ul>
+						</li>
+						<li><strong>注释规范:多行注释 ( / 注释说明 / )</strong> <br />
+							<ul>
+								<li>若开始(/*和结束(*/)都在一行，推荐采用单行注释
+								</li>
+								<li>若至少三行注释时，第一行为/*，最后行为*/，其他行以*开始，并且注释文字与*保留一个空格。
+									<pre><code>例
+/*
+    * 代码执行到这里后会调用setTitle()函数
+    * setTitle()：设置title的值
+    */</code></pre>
+								</li>
+								<li>函数 ( 方法 ) 注释 <br />
+									<pre><code>例
+/** 
+     * 函数说明 
+     * @关键字 
+     */</code></pre>
+								</li>
+							</ul>
+						</li>
+						<li><strong>HTML规范</strong>
+							<ul>
+								<li><strong>文档声明：
+</strong>使用 HTML5 的文档声明类型 :
+									<!DOCTYPE html>
+								</li>
+								<li><strong>语义化：
+</strong><br />语义化是指：根据元素其被创造出来时的初始意义来使用它。<br />意思就是用正确的标签干正确的事，而不是只有div和span
+
+								</li>
+							</ul>
+						</li>
+						<li>
+							<strong>JavaScript规范</strong><br />
+							<ul>
+								<li><strong>避免全局命名空间污染：</strong><br /> 防止全局命名空间被污染，我们通常的做法是将代码包裹成一个 IIFE(Immediately-Invoked Function Expression)，创建独立隔绝的定义域。也使得内存在执行完后立即释放。
+									<pre><code>(function(){
+	…
+})();
+</code></pre>
+
+								</li>
+								<li><strong>声明提前:
+</strong><br />javascript会自动将函数作用域内的变量和方法的定义提前（只是提前声明，赋值还是在原处）
+								</li>
+							</ul>
+						</li>
+						<li>
+							<strong>CSS规范:</strong>
+							<ul>
+								<li><strong>id和class的命名：
+</strong><br />ID和class的名称总是使用可以反应元素目的和用途的名称，或其他通用的名称，代替表象和晦涩难懂的名称
+								</li>
+								<li><strong>合理的使用ID：
+</strong><br />一般情况下ID不应该被用于样式，并且ID的权重很高，所以不使用ID解决样式的问题，而是使用class
+								</li>
+								<li><strong>css选择器中避免使用标签名：
+</strong><br />从结构、表现、行为分离的原则来看，应该尽量避免css中出现HTML标签，并且在css选择器中出现标签名会存在潜在的问题。
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<h2>总结</h2>
+					<blockquote>
+						<p> 代码规范是为了增加代码的可读性，可维护性所采取的非常重要措施。 材料中记载的只是一些最基本的规范，在实际项目中通常会有来自于企业，项目团队的更为详细和明确的规范要求。 
+						</p>
+						<p>查看具体开发代码公约请参考:<a href="../statute/客户端开发代码公约.pdf">客户端开发公约代码</a></p>
+						<p>查看本公司详细代码公约（日语版）请参考:<a href="../statute/クライアントサイド開発コーディング規約(HTML_CSS_JavaScript).pdf">クライアントサイド開発コーディング規約(HTML_CSS_JavaScript)</a></p>
+					</blockquote>
+					<h1>Eclipse的安装及使用</h1>
+					<h2>Eclipse工具介绍</h2>
+					<blockquote>
+						<p>在企业开发中，java程序经常会使用的专业开发工具：eclipse、Myeclipse。 Eclipse最初是由IBM公司开发的，用来提供Java的开发环境，2001年11月贡献给开源社区，现在它由非营利软件供应商联盟Eclipse基金会（Eclipse Foundation）管理。 eclipse它是一个开发工具，比记事本和EdiPlus更加优秀，使用eclipse开发，我们的效率可以提高很多。 eclipse是一个优秀的Java开发工具，是免费的，而Myeclipse是收费的。
+						</p>
+					</blockquote>
+					<h2>Eclipse下载流程</h2>
+					<ul class="space">
+						<li><strong>1、进入官网
+							<a href="https://www.eclipse.org/ide/">www.eclipse.org</a>出现以下页面，用鼠标点击Learn more</strong> <br />
+							<img src="../images/3.jpg" />
+						</li>
+						<li><strong>2、点击完之后，会出现如下图所示界面</strong> <br />
+							<img src="../images/4.jpg" /><br />
+							选择Java IDE，并点击。
+						</li>
+						<li><strong>3、点击如上图所示后会出现如下图所示界面</strong> <br />
+							<img src="../images/5.jpg" /><br />
+							如果电脑是32位系统，就选择Windows 32-bit，如果电脑是64位系统，就选择Windows 64-bit。
+						</li>
+						<li><strong>4、点击之后会出现如下图所示界面</strong> <br />
+							<img src="../images/6.jpg" />
+						</li>
+						<li><strong>4.1、注意:如果下载的十分缓慢，可以尝试改变镜像下载</strong><br />
+							<img src="../images/13.png"/> <br />
+							<strong>4.2、点击后会出现如下图界面所示</strong><br />
+							<img src="../images/14.png"/>
+						</li>
+						<li><strong>5、点击完之后稍等一会（会比较慢，耐心等待一会）选择保存文件的文件夹。下载完成之后，会出现如下图所示文件</strong><br />
+							<img src="../images/8.jpg" />
+						</li>
+					</ul>
+					<h2>Eclipse安装</h2>
+					<ul class="space">
+						<li><strong>1、eclipse安装 下载完成之后需要安装： 安装就特别简单了，只需要将上述的不同的操作系统eclipse根据自己电脑系统位数情况解压到硬盘上即可。 说明：将压缩包最好放到一个具有英文目录的文件夹下在进行解压。 解压之后的结果如下图所示 </strong><br />
+							<img src="../images/9.jpg"/>
+							</li>
+							<li><strong>解压后的目录如下图所示</strong> <br />
+							<img src="../images/10.jpg"/><br />
+							<strong>点击如上图所示eclipse.exe文件就可以启动eclipse了。
+点击之后会出现如下图所示界面：</strong><br />
+<img src="../images/11.jpg"/> <br />
+<strong>说明：</strong><br />
+<strong>工作空间：存储自己建的工程的地方，工作空间可以理解为一个文件夹，以后在开发中写的源文件和类文件都会存放到工作空间中。
+选择工作空间，将来开发的所有代码应该保存的位置。如果上述图中选完工作空间之后，点击OK即可。
+点击OK之后，会进入如下图所示界面：</strong><br />
+<img src="../images/12.jpg"/> <br />
+<strong>IDE:Integrated Development Environment 集成开发环境</strong>
+
+
+							</li>
+						</ul>
+					<h2>Eclipse简单实用方法</h2>
+					<ul class="space">
+						<li><strong>当将欢迎页面关闭之后，会出现如下图所示的界面，这个界面中有很多小窗口，每个小窗口又叫做视窗，每个视窗代表的涵义大致如下图所示：</strong><br />
+						<img src="../images/13.jpg"/>
+						
+						</li>
+						<li><strong>项目窗口，在这个窗口中主要保存我们开发的项目。</strong><br />
+						<img src="../images/14.jpg"/>
+						</li>
+						<li><strong>通过这个视窗可以快速的查阅一个类中的各个成员信息。</strong><br />
+						<img src="../images/15.jpg"/>
+						</li>
+						<li></li>
+					</ul>
+					<h1>Formatter格式的利用</h1>
+					<blockquote>
+						<p><strong>当我们开发javascript前端项目的时候，代码格式非常重要，有了代码格式规范，可以使得我们的项目代码看上去紧凑、整洁。为了符合本公司的代码格式规范，当我们开发项目的时候要使用我们公司自己的代码格式。接下来介绍一下本公司的代码格式formatter。</strong></p>
+					</blockquote>
+					<h2>Formatter格式规范的下载</h2>
+					<p><strong><a href="../formatter/H5_JS_WST_FORMATTER_PROFILE.rar">点击这里下载H5_JS_WST_FORMATTER_PROFILE格式文件</a></strong>下载后请解压保存到自己新建的文件中，方便接下来的导入。</p>
+					<h2>Formatter格式的导入</h2>
+					<ul class="space">
+						<li><strong>1.首先导入一个js文件，点击左上角的File，然后在列表中选择open project点击</strong></li>
+						<li><br />
+						<img src="../images/18.jpg"/>
+						</li>
+						<li><strong>2.随后会出现如下画面，点击directory选择项目</strong> <br />
+						<img src="../images/19.jpg"/>
+						</li>
+						<li>
+							<strong>3.右击文件，点击properties</strong> <br />
+							<img src="../images/20.jpg"/>
+						</li>
+						<li><strong>4.随后出现以下画面，请按照以下顺序执行：</strong> 
+							<ul>
+								<li>第一步：点击JavaScript</li>
+								<li>第二步：点击Code Style</li>
+								<li>第三步：点击Formatter</li>
+								<li>第四步：勾选enbale project specific settings</li>
+								<li>第五步：点击Import</li>
+							</ul>
+							 <br />
+						<img src="../images/21.jpg"/>
+						</li>
+						<li><strong>5.导入下载下来解压后的H5_JS_WST_FORMATTER_PROFILE.xml文件</strong> <br />
+							<img src="../images/22.jpg"/>
+						</li>
+						<li><strong>6.设置文件保存时自动完成该格式的设置，请按照以下顺序执行:</strong>
+							<ul>
+								<li>第一步：点击JavaScript</li>
+								<li>第二步：点击Editor</li>
+								<li>第三步：点击Save Actions</li>
+								<li>第四步：勾选Enbale project specific settings</li>
+								<li>第五步：勾选Perform the selected actions on save</li>
+								<li>第六步：勾选Format source code</li>
+							</ul>
+</li>
+						<li> <br />
+							<img src="../images/23.jpg"/>
+						</li>
+						<li><strong>通过以上步骤，当你Ctrl+S保存文件的时候，文件会自动按照format设定的格式规范文件。</strong></li>
+					</ul>
+					<h2>规范格式操作</h2>
+					<p><strong>示例:下面的js代码是人为打乱格式的,此时还没有保存。</strong></p>
+					<img src="../images/format3.png" alt="" />
+					<p><strong>接下来，很简单，只要按Ctrl+S自动保存，就能规范格式</strong></p>
+					<img src="../images/format1.png"/>
+					<p><strong>
+						你还可以在未保存的状态这样操作 <br />
+						=>在javascript文件中右击 <br />
+						=>选中source <br />
+						=>选中format。<br />
+						也可以使用快捷键Ctrl+Shift+F进行操作。</strong></p>
+					<img src="../images/format.png" alt="" />
+					<p><strong>通过以上步骤，也能实现对格式的调整。</strong></p>
+					<img src="../images/format2.png"/>
+					<p><strong>注意:在实际的项目开发的过程，不能只将format格式导入后就结束了，而是应该在写代码的过程中，时刻遵守代码规范。</strong></p>
+				</article>
+				<!--返回首页按钮-->
+				<input class="btn" type="button" name="" id="" value="返回首页" />
+				<!--跳转到下一章节-->
+				<input class="btn1" type="button" name="" id="" value="下一章节" />
+				<!-- 返回顶部按钮 -->
+				<div class="backTop"></div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript" src="../lib/toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="../lib/toc_conf.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+	$('.btn1').click(function(){
+		location.href='./exercise2.html'
+	})
+</script>

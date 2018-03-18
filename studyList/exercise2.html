@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>综合练习2</title>
+		<link href="../lib/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../lib/toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+	</head>
+
+	<body>
+		<div>
+			<div style='width:25%;'>
+				<ul id="tree" class="ztree" style='width:100%'>
+
+				</ul>
+			</div>
+			<div id='readme' style='width:70%;margin-left:20%;'>
+				<article class='markdown-body'>
+					<h1>投影照片</h1>
+						<h2>演示</h2>
+						<img src="../exercises/ex2/question/ex2.gif"/>
+						<h2>要求</h2>
+						<ul>
+							<li>布局实现标题栏、侧边导航栏、内容栏和注脚</li>
+							<li>标题栏、侧边导航栏和注脚固定在页面相应位置，不随滚动条滚动</li>
+							<li>通过导航栏选择更改内容栏显示不同的图片</li>
+						</ul>
+						<p style="font-size: 22px;"><a href="../exercises/ex2/question/ex2.pdf">点击这里查看ex2详细资料</a></p>
+						<p style="font-size: 22px;"><a href="../exercises/ex2.rar">点击这里下载ex2的资料包</a></p>
+					<h1>练习讲解</h1>
+					<h2>html构建页面结构</h2>
+					<ul>
+						<li><strong>第一步:</strong>看整个页面能够分为几个模块，分别是头部、内容部分、底部，这三个模块。在这三个模块外面可以包裹一个大盒子<code>div</code>。</li>
+						<li><strong>第二步:</strong>头部，可以用<code>div</code>标签，再让文字居中显示。</li>
+						<li><strong>第三步:</strong>内容部分又分成两大块，左侧导航栏和右侧照片展示。<br />
+							<ul>
+								<li>导航栏部分可以使用<code>ul</code><code>li</code>标签，为了实现点击导航栏显示对应的图片的功能，要在<code>li</code>标签中设置自定义属性"data-id"</li>
+								<li>内容部分可以通过js动态添加。只需要一个大盒子包住就可以了。
+								</li>
+							</ul>
+						</li>
+						<li><strong>第四步:</strong>底部同样用一个<code>div</code>标签即可。</li>
+					</ul>
+					<blockquote>
+						<p>通过以上的步骤，就把基本的页面结构制作完成了，接下来可以通过css来增加页面的样式。</p>
+					</blockquote>
+					<h2>css添加样式美化</h2>
+					<blockquote>
+						<p>css是用来美化页面，给html标签添加样式的，比如说设置各种大小，颜色，等等。接下来详细讲解一下。</p>
+					</blockquote>
+					<ul>
+						<li>1、头部和底部的样式差不多，因此可以使用并集选择器，将样式放到一块，使用相对定位，头部"top:0",底部"bottom:0"。</li>
+						<li>2、内容部分的左侧导航栏在水平方向"overflow-x:hidden"，垂直方向"overflow-y:auto"，高度由里面的<code>li</code>撑开，不用写死。</li>
+						<li>3、内容部分的右侧照片显示不要将高度定死，使用"overflow-auto"自适应，宽度使用calc()方法，将屏幕100%-左侧导航栏的宽度</li>
+					</ul>
+					<blockquote>
+						<p>通过css来描述页面结构，使画面看上去更美观，接下来通过javascript来使页面灵动起来</p>
+					</blockquote>
+					<h2>javascript增加动态效果</h2>
+					<ul>
+						<li><strong>第一步:</strong>找对象，将需要使用到的对象找到，并用变量接收，为了语义化，然后使用变量接收。</li>
+						<li><strong>第二步:</strong>根据业务需求编写代码。<br />
+							<ul>
+								<li><strong>1、打开页面展示图片。</strong><br />
+								动态创建标签，添加样式，背景照片。
+								</li>
+								<li><strong>2、点击导航栏选择更改内容栏显示不同的图片</strong>点击导航栏，获取当前点击<code>li</code>标签的自定义属性的值，根据值显示对应的照片。</li>
+								<li><strong>3、扩展要求导航栏增加全部选项，显示所有图片</strong>将所有的图片都添加进去</li>
+								<li><strong>4、扩展要求增加注脚点击事件，点击后内容栏图片旋转</strong>通过添加DOM元素的方法element.style.transform='rotate('+deg+'deg)'方法，这是css3的属性，在这里只需要了解即可。</li>
+							</ul>
+						</li>
+						<li><strong>第三步:</strong>使用开发者工具测试</li>
+					</ul>
+					<p style="font-size: 22px;"><a href="../answers/ex1.rar">点击这里获取本次练习答案</a>
+				</article>
+				<!--返回首页按钮-->
+			<input class="btn" type="button" name="" id="" value="返回首页" />
+			<!-- 返回顶部按钮 -->
+			<div class="backTop"></div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript" src="../lib/toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="../lib/toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="../lib/toc_conf.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+	$('.btn1').click(function(){
+		location.href='./javascript(进阶).html';
+	})
+</script>

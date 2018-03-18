@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Home</title>
+</head>
+<body>
+<div id="loginBlock" class="login tab-1">
+          <div class="loginFunc">
+            <div id="lbApp" class="loginFuncApp">二维码登录</div>
+            <div id="lbNormal" class="loginFuncNormal">邮箱帐号登录</div>
+          </div>
+          <!-- 安全登录 -->
+          <div id="appLoginTab" class="loginForm" style="display: block;">
+            <div id="appLoginWait" style="display: block;">
+              <div class="appLoginWaitInner">
+                <h3><strong>网易邮箱大师</strong> 手机版扫码登录</h3>
+                <p class="login-dashi-text">官方APP更安全  <span class="appLoginlink"><a href="http://mail.163.com/dashi/dlpro.html?from=mail101" target="_blank">立即下载</a></span></p>
+                <div id="appCodeWrap">
+                  <div class="appCode-example" id="appCodeExample" style="background: rgba(0, 0, 0, 0) url(&quot;https://mimg.127.net/index/lib/img/applogin_example.png&quot;) no-repeat scroll 0% 0%;"></div>
+                  <div id="appCodeBox">
+                    <img id="appCode" data-src="https://mimg.127.net/index/lib/img/t.gif" src="https://reg.163.com/services/getUrlQrcode?uuid=da22cbf361fc10d60a965d83580c3fa7&amp;size=170" width="130" height="130">
+                    <img id="appCodeLoading" data-src="https://mimg.127.net/index/lib/img/loading_s.gif" style="display: none;" src="https://mimg.127.net/index/lib/img/loading_s.gif" width="16" height="16">
+                    <div id="appCodeRefresh" style="display:none;">
+                      <div class="appCode-mask"></div>
+                      <div class="appCode-wrap"><p>二维码已失效<br>请点击刷新</p></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p id="appLoginTxt" class="txt-err"></p>
+
+              <div class="appLogin-extend">
+                <img src="https://mimg.127.net/index/lib/img/applogin_dashi_pc.png" class="appLogin-extend-aside">
+                <div class="appLogin-extend-main">
+                  <p><strong>网易邮箱大师电脑版</strong></p>
+                  <p class="appLogin-extend-text1">登录更便捷，工作更高效</p>
+                  <a href="http://mail.163.com/dashi/dlpro.html?from=mail101&amp;spread=pc" target="_blank">立即下载&gt;&gt;</a>
+                </div>
+              </div>
+            </div>
+            <div id="appLoginScan" style="display:none">
+              <div class="appLogin-scanSuc" id="appLoginScanSuc" style="background: rgba(0, 0, 0, 0) url(&quot;https://mimg.127.net/index/lib/img/applogin_scansuc.png&quot;) no-repeat scroll 0% 0%;"></div>
+              <p class="appLogin-scantxt txt-suc">成功扫描，请在手机上确认登录</p>
+              <a id="appLoginRestart" href="javascript:void(0)">返回重新扫描</a>
+            </div>
+            <form id="appLoginForm" method="post" action="" autocomplete="off" target="_self"></form>
+            <img id="appLoginStat" style="position:absolute;left:0;bottom:-1px" src="https://irpmt.mail.163.com/ir/stat.gif?domain%3D163.com%26type%3Dmailmaster_login%26key%3D%E5%AE%89%E5%85%A8%E7%99%BB%E5%BD%95%26uid%3D%26rnd%3D0.8483649159901652" width="1" height="1">
+          </div>
+          <!-- 邮箱帐号登录 -->
+          <div id="normalLoginTab" class="loginForm" style="display: none;">
+            <div class="loginWrap">
+              <div id="loginDiv" class="loginUrs" style="width: 295px; height: 413px;"><iframe name="" id="x-URS-iframe" scrolling="no" style="width: 100%; height: 100%; border: medium none; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%;" src="https://dl.reg.163.com/webzj/m163_2/pub/index_dl.html?cd=https%3A%2F%2Fmimg.127.net&amp;cf=%2Findex%2F163%2Fscripts%2F2017%2Fpc%2Fcss%2Furs_v1.css&amp;wdaId=&amp;pkid=CvViHzl&amp;product=mail163" frameborder="0"></iframe></div>
+              <div class="loginFormConf">
+                <div class="loginFormVer">
+                  版本: <a id="styleConf" href="javascript:void(0);">默认版本 <b class="ico ico-arr ico-arr-d"></b></a>
+                </div>
+                <!-- <div class="loginFormService" id="loginSSL">正使用SSL登录</div> -->
+                <div class="loginFormService" id="loginSSL">
+                    <span class="u-checkbox u-checkbox-select" id="AllSSLCkb1"></span>
+                    <label for="AllSSLCkb1">全程SSL</label>
+                </div>
+                <div id="styleConfBlock" class="loginFormVerList unishadow">
+                  <ul>
+                    <li><a id="styleconf-1" class="verSelected" href="javascript:void(0);">默认版本</a></li>
+                    <li><a id="styleconf7" href="javascript:void(0);">网易邮箱<span class="fontWeight">6.0</span>版</a></li>
+                    <li><a id="styleconf6" href="javascript:void(0);">网易邮箱<span class="fontWeight">6.0</span>简约版</a></li>
+                  </ul>
+                </div>
+                <div class="loginFormService" id="AllSSL" style="display:none">
+                    <span class="u-checkbox" id="AllSSLCkb"></span>
+                    <label for="AllSSLCkb">全程SSL</label>
+                </div>
+                <div class="loginFormCheckInner" style="display:none">
+                  <input class="loginFormCbx loginFormSslCbx" tabindex="5" title="SSL安全登录" id="SslLogin" checked="checked" type="checkbox"><label class="loginFormSslText" for="SslLogin">&nbsp;<span style="font-family:verdana;">SSL</span>安全登录</label>
+                </div>
+                <div class="loginFormService" style="display:none">
+                  <a id="selectLocationTips" href="javascript:void(0);" onclick="fSelectLoaction('show');return false;">登录速度太慢? <b class="ico ico-arr ico-arr-d"></b></a>
+                  <span id="selectLocationTipsDone">
+                    <a href="javascript:void(0);" onclick="fSelectLoaction('show');return false;">
+                      <span>服务器: <span id="selectLocation">电信</span></span><b class="ico ico-arr ico-arr-d"></b>
+                    </a>
+                  </span>
+                </div>
+                <div id="locationTest" class="unishadow">
+                  <div class="locationTestTitle">
+                    <h3>测试并选择最佳服务器</h3>
+                    <a class="locationTestTitleClose" href="javascript:void(0);" onclick="fSelectLoaction();return false;">&gt;关闭</a>
+                  </div>
+                  <div class="locationTestList">
+                    <ul>
+                      <li>
+                        <a id="locationHref0" href="javascript:void(0);" onclick="fLocationChoose('t');return false;">
+                          电&nbsp;&nbsp;&nbsp;信
+                          <br><span class="locationTestEach" id="locationTest0"></span>
+                        </a>
+                      </li>
+                      <li style="border-left:1px solid #d5dbe2;border-right:1px solid #d5dbe2;">
+                        <a id="locationHref1" href="javascript:void(0);" onclick="fLocationChoose('c');return false;">
+                          联&nbsp;&nbsp;&nbsp;通
+                          <br><span class="locationTestEach" id="locationTest1"></span>
+                        </a>
+                      </li>
+                      <li>
+                        <a id="locationHref2" href="javascript:void(0);" onclick="fLocationChoose('e');return false;">
+                          教育网
+                          <br><span class="locationTestEach" id="locationTest2"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mailApp">
+                <a class="mailApp-logo" id="mailAppLogo" href="https://v.mail.163.com/?from=163login150" target="_blank" style="background: rgba(0, 0, 0, 0) url(&quot;https://mimg.127.net/index/lib/img/quan.png&quot;) no-repeat scroll 0% 0%;"></a>
+              </div>
+            </div>
+            <div id="normalLoginFormMask" class="login-form-mask" style="display: none;">
+              <p class="login-form-mask-loading"><i></i><span>载入中……</span></p>
+            </div>
+          </div>
+        </div>
+</div>	
+<script type="text/javascript" src="https://mimg.127.net/m/ir/8/bLoginTpl.js" defer="defer"></script>
+<script type="text/javascript" src="https://mimg.127.net/index/163/scripts/2017/pc/js/main.fd82b56d.js"></script>
+</body>
+</html>
