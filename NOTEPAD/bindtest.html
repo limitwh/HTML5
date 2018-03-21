@@ -1,0 +1,41 @@
+<!doctype html>
+<html>  
+    <head>  
+        <meta charset="UTF-8">  
+        <script src="lib/jQuery/jquery.min.js"></script>
+        <script src="lib/hifive/ejs-h5mod.js"></script>
+        <script src="lib/hifive/h5.dev.js"></script>
+        <!-- 在这边引入js文件 -->  
+    <!--<script src="lib/submit.js"></script>     -->
+        <script src="lib/bind.js"></script> 
+        <title>hifive bindtest</title>  
+    </head>  
+    <body>  
+        <div id="todolist">
+            <h1 data-h5-bind="title"></h1>
+            <div data-h5-context="todoitem">
+                Text:<span data-h5-bind="text"></span>
+                <br>
+                Time:<span data-h5-bind="time"></span>
+            </div>
+        </div>
+    </body>  
+</html> 
+
+
+<!--  <div id="subtext">
+            <div class="submitSection">
+                <input class="inputText" type="text" placeholder="待办事项" id="willdo">
+                <button class="btn btn-default submitBtn" id="willdosub">提交</button>
+
+            </div>
+            <span id="result"> </span>  
+        </div>
+        <div id="binditem">
+           <h1 data-h5-bind="title"></h1>
+           <div data-h5-context="item">
+                ID: <span data-h5-bind="id"></span>
+                <br>
+                Name: <span data-h5-bind="name"></span>
+            </div>
+        </div> -->

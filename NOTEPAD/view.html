@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="lib/jQuery/jquery.min.js"></script>
+    <script src="lib/hifive/ejs-h5mod.js"></script>
+    <script src="lib/hifive/h5.dev.js"></script>
+    <!-- 在这边引入js文件 -->
+    <script src="lib/step5.js"></script>
+     <title>hifive 视图操作</title>
+  </head>
+  <body>
+    <div id="container">
+      <div>
+        从1到输入的数值中为奇数的是<span style="color: red;">红色</span>で、
+        偶数是<span style="color: blue;">蓝色</span>的画面。
+      </div>
+      <input type="text" id="to" value="" />
+      <input type="button" id="output" value="出力" />
+      <ul id="list"></ul> <!-- 这边在页面渲染出模板 -->
+    </div>
+  </body>
+</html>
