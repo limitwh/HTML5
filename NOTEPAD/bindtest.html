@@ -6,20 +6,31 @@
         <script src="lib/hifive/ejs-h5mod.js"></script>
         <script src="lib/hifive/h5.dev.js"></script>
         <!-- 在这边引入js文件 -->  
-    <!--<script src="lib/submit.js"></script>     -->
-        <script src="lib/bind.js"></script> 
+        <script src="lib/bindmodle.js"></script>
+        <script src="lib/bindLogic.js"></script> 
+        <script src="lib/bindController.js"></script>                 
         <title>hifive bindtest</title>  
     </head>  
-    <body>  
-        <div id="todolist">
-            <h1 data-h5-bind="title"></h1>
-            <div data-h5-context="todoitem">
-                Text:<span data-h5-bind="text"></span>
+    <body>
+    <div id="page">
+        <div id ="newitem">
+            <div>
+                Text:<input type="text" name="newtext" id="newtext">
                 <br>
-                Time:<span data-h5-bind="time"></span>
+                Time:<input type="text" name="newtime" id="newtime">
+                <input type="submit" name="newbtn" id="newbtn" value="submit">
             </div>
         </div>
-    </body>  
+        <div id="todolist">
+            <ul data-hu-loop-context="bindtest">
+                Text:<span data-h5-bind="text"></span>
+                Time:<span data-h5-bind="time"></span>                
+            </ul>
+        </div>
+    </div>
+    </body>
+
+<script src="lib/init.js"></script>
 </html> 
 
 
