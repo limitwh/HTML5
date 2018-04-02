@@ -1,11 +1,13 @@
 $(function() {
 	var bindLogic = {
 		__name:'BindLogic',
+    model : bind.BindModel,
 
 		bindData: h5.core.data.createObservableArray(),
 		init: function() {
 			var df = this.deferred();
 			var that = this;
+
 			$.ajax({
 				url: 'json/bindlist.json',
 				dataType: 'json',
@@ -16,11 +18,11 @@ $(function() {
                			 	bindlist.push(data[i]);
                			 }
                			 that.bindData.copyFrom(that.model.create(bindlist));
-               			 df.resolve();
-				},
-                error: function() {
-                    alert('读取数据失败');
-                }
+               			 df.resolve(that.bindData);
+				},       
+        error: function() {
+            alert('读取数据失败');
+        }
 			});
 			return df.promise();
 		},

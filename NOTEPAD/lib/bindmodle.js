@@ -8,10 +8,10 @@ $(function() {
 				type: 'integer'
 			},	
 			text: {
-				typy:'string'
+				type:'string'
 			},
 			time: {
-				typy:'string'
+				type:'string'
 			}
 		}
 	});

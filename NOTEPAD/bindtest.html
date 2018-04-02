@@ -15,14 +15,16 @@
     <div id="page">
         <div id ="newitem">
             <div>
-                Text:<input type="text" name="newtext" id="newtext">
+                <input type="hidden" data-h5-bind="id">
+                Text:<input type="text" name="newtext" id="newtext" data-h5-bind="text">
                 <br>
-                Time:<input type="text" name="newtime" id="newtime">
+                Time:<input type="text" name="newtime" id="newtime" data-h5-bind="time">
                 <input type="submit" name="newbtn" id="newbtn" value="submit">
             </div>
         </div>
         <div id="todolist">
-            <ul data-hu-loop-context="bindtest">
+            <ul data-h5-loop-context="bindtest">
+                <!-- ID:<span data-h5-bind="id"></span> -->
                 Text:<span data-h5-bind="text"></span>
                 Time:<span data-h5-bind="time"></span>                
             </ul>
@@ -32,21 +34,3 @@
 
 <script src="lib/init.js"></script>
 </html> 
-
-
-<!--  <div id="subtext">
-            <div class="submitSection">
-                <input class="inputText" type="text" placeholder="待办事项" id="willdo">
-                <button class="btn btn-default submitBtn" id="willdosub">提交</button>
-
-            </div>
-            <span id="result"> </span>  
-        </div>
-        <div id="binditem">
-           <h1 data-h5-bind="title"></h1>
-           <div data-h5-context="item">
-                ID: <span data-h5-bind="id"></span>
-                <br>
-                Name: <span data-h5-bind="name"></span>
-            </div>
-        </div> -->

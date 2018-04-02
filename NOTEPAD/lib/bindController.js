@@ -25,6 +25,8 @@ $(function() {
             		alert("Time is empty");
             	} else {
             		this.bindLogic.add($inputText.val(),$inputTime.val());
+                    $inputText.val('');
+                    $inputTime.val('');
             	}
             }
             context.event.preventDefault();
