@@ -1,7 +1,7 @@
 $(function(){
 	var notePadLogic = {
-		__name='NotePadLogic',
-		model:notePadModel.NotePadModel,
+		__name:'NotePadLogic',
+		model:NotePad.NotePadModel,
 
 		undoneAry:h5.core.data.createObservableArray(),
 		doneAry:h5.core.data.createObservableArray(),
@@ -67,36 +67,7 @@ $(function(){
 					break;
 				}
 			}
-		},
-
-/*		setDone:function(id){
-			for(var i=0;i<undoneAry.length;i++){
-				if(undoneAry[i].get('id') == id){
-					this.doneAry.push(undoneAry[i]);
-					this.undoneAry.splice(i,1);
-					break;
-				}
-			}
-		}，
-
-		seUndone:function(id){
-			for(var i=0;i<undoneAry.length;i++){
-				if(undoneAry[i].get('id') == id){
-					this.doneAry.push(undoneAry[i]);
-					this.undoneAry.splice(i,1);
-					break;
-				}
-			}
-		},
-
-		setDelete:function(id){
-			for(var i=0;i<doneAry.length;i++){
-				if(doneAry[i].get('id') == id){
-					this.deleteAry.push(doneAry[i]);
-					this.doneAry.splice(i,1);
-					break;
-				}
-			}
-		},*/
-	}
+		}
+	};
+	h5.core.expose(notePadLogic);
 });
