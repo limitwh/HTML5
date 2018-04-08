@@ -18,7 +18,7 @@ $(function(){
 				depend:{
 					on:'status',
 					calc:function(){
-						return this.get('status')>1 ? false:true
+						return this.get('status')>1 ? true:false;
 					}
 				}
 			}

@@ -30,15 +30,16 @@ $(function(){
 							}
 						}
 					}
-					that.undoneAry.copyFrom(that.model.creat(undoneAry));
-					that.doneAry.copyFrom(that.model.creat(doneAry));
-					that.deleteAry.copyFrom(that.model.creat(deleteAry));
+					that.undoneAry.copyFrom(that.model.create(undoneAry));
+					that.doneAry.copyFrom(that.model.create(doneAry));
+					that.deleteAry.copyFrom(that.model.create(deleteAry));
 					df.resolve();
 				},
 				error:function(){
 					alert("No data access!");
 				}
 			});
+			console.log('init in logic');
 			return df.promise();
 		},
 
@@ -51,7 +52,7 @@ $(function(){
 		},
 
 		add:function(content){
-			var item = this.model.creat({
+			var item = this.model.create({
 				id: this._getNewId(),
 				status:0,
 				content:content
@@ -60,8 +61,9 @@ $(function(){
 		},
 
 		moveItembtwAry:function(id,removeary,addary){
+			console.log("move item in logic");
 			for(var i=0;i<removeary.length;i++){
-				if(removeary[i].get('id') == id){
+				if(removeary[i]._values.id == id){
 					addary.push(removeary[i]);
 					removeary.splice(i,1);
 					break;

@@ -22,10 +22,11 @@
 	<!-- 追加的库或文件请写在这里 -->
 	<script src="lib/ex/NotePadModel.js"></script>   
 	<script src="lib/ex/NotePadLogic.js"></script>
-
+	<script src="lib/ex/NotePadController.js"></script>	
+	<script src="lib/ex/init.js"></script>	
 </head>
 <body>
-	<div class="page">
+	<div id="notePads" class="page">
 		<!-- 标题栏 -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
@@ -39,8 +40,8 @@
 		</nav>
 		<!-- 提交栏 -->
 		<div class="submitSection">
-			<input class="inputText" type="text" placeholder="待办事项">
-			<button class="btn btn-default submitBtn">提交</button>
+			<input class="inputText" type="text" placeholder="待办事项" id="inputText">
+			<button class="btn btn-default submitBtn" id="newbtn">提交</button>
 		</div>
 		<!-- 一览栏 -->
 		<div class="list">
