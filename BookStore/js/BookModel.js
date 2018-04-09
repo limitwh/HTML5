@@ -14,11 +14,11 @@ $(function(){
 				type: 'string'
 			},
 			price:{
-				type: 'integer'
+				type: 'number'
 			},
 			img: {
 				type: 'string'
-			}，
+			},
 			category:{
 				type: 'string'
 			}
