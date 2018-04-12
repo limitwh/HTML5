@@ -1,13 +1,13 @@
 $(function(){
 	var bookListLogic = {
-		__name:'BookListLogic',
+		__name:'bookListLogic',
 		model: Book.BookModel,
 
 		booklist:h5.core.data.createObservableArray(),
 		init: function(){
 			var df = this.deferred();
 			var that = this;
-
+			console.log("bookListLogic init");
 			$.ajax({
 				url:'json/booklist.json',
 				dataType:'json',
