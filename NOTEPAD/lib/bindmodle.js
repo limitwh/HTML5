@@ -6,6 +6,27 @@ $(function() {
 			id: {
 				id: true,
 				type: 'integer'
+			},
+			name: {
+				type: 'string'
+			},
+			desc:{
+				type: 'string'
+			},
+			price:{
+				type: 'number'
+			},
+			img: {
+				type: 'string'
+			},
+			category:{
+				type: 'string'
+			}
+		}
+		/*schema: {
+			id: {
+				id: true,
+				type: 'integer'
 			},	
 			text: {
 				type:'string'
@@ -13,7 +34,7 @@ $(function() {
 			time: {
 				type:'string'
 			}
-		}
+		}*/
 	});
 	h5.u.obj.expose('bind', {
 		BindModel: bindModel

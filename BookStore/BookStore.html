@@ -2,29 +2,43 @@
 <html>  
     <head>  
         <meta charset="UTF-8">  
-        <script src="lib/jquery.min.js"></script>
-        <script src="lib/ejs-h5mod.js"></script>
-        <script src="lib/h5.dev.js"></script>
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/ejs-h5mod.js"></script>
+        <script type="text/javascript" src="lib/h5.dev.js"></script>
+        <script type="text/javascript" src="bootstrap/bootstrap.js"></script>
         <!-- 在这边引入js文件 -->  
         <script src="js/BookModel.js"></script>
         <script src="js/CartModel.js"></script>
         <script src="js/BookListLogic.js"></script>
+        <script src="js/TestController.js"></script>
         <script src="js/BookListController.js"></script>
+        <!-- 在这边引入CSS文件 -->  
+        <link rel="stylesheet" type="text/css" href="CSS/WEBTEST.CSS"/>
+        <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
         <title>Book Store</title>  
     </head>  
-    <body>
-    <div id="page">
-        <div id ="BookInfo">
+    <body>  
+    <div class="parent" id="page">    
+        <div class="side"></div>  
+        <div class="main">
+          <div class="logo">
+            
+          </div>
+          <div class="search">
+            <button type="button" class="btn btn-default" id="searchname">搜索名字</button>
+            <input class="inputText" type="text" placeholder="输入名字">
+            <br>
+            <button type="button" class="btn btn-default" id="searchcata">搜索类型</button>
+            <input class="inputText" type="text" placeholder="输入类型">
+          </div>
+          <div class="List" id="booklist">
+            <ul data-h5-loop-context="booktest">
+                <span data-h5-bind="name" class="listname"></span>
+            </ul>
+          </div>
+        </div>  
+    </div>    
+    </body> 
 
-        </div>
-        <div id="BookDetail">
-
-        </div>
-        <div id="BookCart">
-
-        </div>
-    </div>
-    </body>
-
-<!-- <script src="js/init.js"></script> -->
+    <script src="js/init.js"></script>
 </html> 

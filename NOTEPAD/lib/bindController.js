@@ -10,8 +10,8 @@ $(function() {
         			bindtest:that.bindLogic.bindData
         		});
         	});
-        },
-        '#newbtn click': function(context) {
+        }
+  /*      '#newbtn click': function(context) {
             this._insertToDo(context);
         },
         _insertToDo:function(context){
@@ -30,7 +30,7 @@ $(function() {
             	}
             }
             context.event.preventDefault();
-        }        
+        }     */   
     };
     h5.core.expose(bindlistController);    
 });

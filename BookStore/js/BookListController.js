@@ -1,13 +1,16 @@
 $(function(){
-	var bookListController = {
-		__name: "bookListController",
-		_bookListLogic: bookListLogic,
-		__templates: "view/BookDetail.ejs",
-		bookList: [],
-		init: function() {
-        	console.log("_bookListLogic init");
-			this._bookListLogic.init();
-		}
-	}
-	h5.core.expose(bookListController);
+	var BookListController = {
+		__name: 'BookListController',
+        bookListLogic: BookListLogic,
+
+        __ready: function() {
+        	var that = this;
+        	this.bookListLogic.init().done(function(){
+        		that.view.bind('#booklist',{
+        			booktest:that.bookListLogic.booklist
+        		});
+        	});
+        }
+	};
+	h5.core.expose(BookListController);
 });

@@ -1,6 +1,6 @@
 $(function(){
 	var bookListLogic = {
-		__name:'bookListLogic',
+		__name:'BookListLogic',
 		model: Book.BookModel,
 
 		booklist:h5.core.data.createObservableArray(),
@@ -9,16 +9,16 @@ $(function(){
 			var that = this;
 			console.log("bookListLogic init");
 			$.ajax({
-				url:'json/booklist.json',
-				dataType:'json',
+				url: 'json/book.json',
+				dataType: 'json',
 				cache: false,
-				success:function(data){
-					var booklistjson=[];
-					for (var i = 0; i < data.length; i++) {
-						booklistjson.push(data[i]);
-					}
-					that.booklist.copyForm(that.model.create(booklistjson));
-					df.resolve(that.booklist);
+				success: function(data) {
+               			 var bookdata = [];
+               			 for (var i = 0; i < data.length; i++) {
+               			 	bookdata.push(data[i]);
+               			 }
+               			 that.booklist.copyFrom(that.model.create(bookdata));
+               			 df.resolve(that.booklist);
 				},
 				error:function(){
 					alert('Book list json file read error');

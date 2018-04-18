@@ -9,13 +9,14 @@ $(function() {
 			var that = this;
 
 			$.ajax({
-				url: 'json/bindlist.json',
+				url: 'json/book.json',
 				dataType: 'json',
 				cache: false,
 				success: function(data) {
                			 var bindlist = [];
                			 for (var i = 0; i < data.length; i++) {
                			 	bindlist.push(data[i]);
+                      console.log(data[i]);
                			 }
                			 that.bindData.copyFrom(that.model.create(bindlist));
                			 df.resolve(that.bindData);

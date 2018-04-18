@@ -1,35 +1,64 @@
-body{  
-margin:0px;  
-}  
-#box{  
-width:750px;  
-height:1000px;  
-margin:auto;  
-  
-}  
-#head{  
-width:750px;  
-height:150px;  
-background:#00FFCC;  
-}  
-#mid{  
-width:750px;  
-height:700px;  
-background:#33CCFF;  
-}  
-#mid_left{  
-width:350px;  
-height:700px;  
-float:left;  
-}  
-#mid_right{  
-width:400px;  
-height:700px;  
-float:left;  
-}  
-#foot  
-{  
-width:750px;  
-height:150px;  
-background:#00FFCC;  
-}  
+  body{   
+      margin:0;   
+      padding:0; 
+      text-align: center;  
+      width: 800px;
+  }   
+  .parent{   
+      line-height:900px;   
+  }       
+  .side{   
+      float:left;
+      width: 35%; 
+      height:inherit;   
+      background:#ccc;   
+  }   
+  .main{   
+      float:right;
+      width: 65%;  
+      height: inherit;
+      background:#aaa;  
+  }
+  .logo{
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 25%;
+    background: red;
+    margin: auto;
+    text-align:center;
+  }
+  .search{
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    height:30px; 
+    background: #fff;
+    text-align:center;
+    line-height:30px;
+  }
+  .List{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 50%;
+    background: blue;
+    margin: auto;
+    text-align:center;
+    line-height:30px;
+  }
+  .inputText{
+    line-height: 2.3rem;
+    font-size: 1.5rem;
+    width: 40%;
+    vertical-align: middle;
+    display:inline-block;
+  }
+  .listname{
+    line-height: 2.3rem;
+    font-size: 1.5rem;
+    width: 40%;
+    background:  #f0f;
+    vertical-align: middle;
+    display:inline-block; 
+  }
