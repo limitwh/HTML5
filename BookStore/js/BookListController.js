@@ -1,6 +1,6 @@
 $(function(){
 	var BookListController = {
-		__name: 'BookListController',
+	__name: 'BookListController',
         bookListLogic: BookListLogic,
 
         __ready: function() {
@@ -10,7 +10,11 @@ $(function(){
         			booktest:that.bookListLogic.booklist
         		});
         	});
+        },
+        '#searchname onclick': function(){
+                console.log('searchname onclick');
         }
+
 	};
 	h5.core.expose(BookListController);
 });

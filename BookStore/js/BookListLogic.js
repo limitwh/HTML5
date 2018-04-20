@@ -26,9 +26,10 @@ $(function(){
 			});
 			return df.promise();
 		},
-		getDetailByCata:function(BookCata){
+
+		getDetailByName:function(Name){
 			for (var i = 0; i < booklist.length; i++) {
-				if (booklist[i].category=BookCata) {
+				if (booklist[i].name=Name) {
 					return booklist[i];
 				}
 			}
