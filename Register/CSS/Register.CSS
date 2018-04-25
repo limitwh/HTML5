@@ -1,0 +1,25 @@
+  body{   
+      margin:0;   
+      padding:0; 
+      text-align:center;
+  }   
+  .leftdiv{   
+    width: 200px;  
+    background: #F0F0F0;  
+    position: absolute; 
+    top: 50px;
+    bottom: 0px;
+    left: 0px;
+  }
+  .rightdiv{   
+    position: absolute;
+    left: 200px;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+  }
+  #iconUser{
+    font-size:100px;
+    border-radius:200px;
+    background: #FFCBB3;
+  }
