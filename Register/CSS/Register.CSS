@@ -23,3 +23,15 @@
     border-radius:200px;
     background: #FFCBB3;
   }
+/*  .registertitle{
+    border: 10px;
+    text-align:left;
+  }*/
+  #titlepage{
+    position:absolute;
+    left:50px;
+  }
+  #titlebtn{
+    position:absolute;
+    right:50px;
+  }
