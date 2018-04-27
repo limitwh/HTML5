@@ -1,9 +1,9 @@
   body{   
       margin:0;   
       padding:0; 
-      text-align:center;
   }   
   .leftdiv{   
+    text-align:center;
     width: 200px;  
     background: #F0F0F0;  
     position: absolute; 
@@ -23,15 +23,25 @@
     border-radius:200px;
     background: #FFCBB3;
   }
-/*  .registertitle{
-    border: 10px;
-    text-align:left;
-  }*/
-  #titlepage{
-    position:absolute;
-    left:50px;
+  .hrline{
+    width: 98%;
+    height:3px;
+    top: 25px;
+    background:#000000;
+  }
+  .titlepage{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size:20px;
   }
   #titlebtn{
     position:absolute;
+    top: 10px;
     right:50px;
+  }
+  .verifytitle{
+    position:absolute;
+    left: 15em;    
+    font-size:20px;
   }
