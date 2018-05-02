@@ -136,7 +136,7 @@
     <form>
         <div class="row">
             <div class="col-md-4">
-                <span class="verifytitle ">登陆账号</span>
+                <span class="verifytitle">登陆账号</span>
             </div>
             <div class="col-lg-6">
                 <div class="col-lg-10">
@@ -185,11 +185,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" name="Password1"
-                               required data-bv-notempty-message="密码不能为空" data-bv-trigger="blur" 
-                               minlength="8" mixlength="20" data-bv-stringlength-message="密码长度在8到20位之间"
-                               data-bv-identical="true" data-bv-identical-field="Password2" data-bv-identical-message="两次输入的密码不一致" placeholder="请输入密码"/>
-<!--                    <input type="Password" class="form-control" name="Password1" placeholder="请输入密码"> -->
+                        <input type="Password" class="form-control" name="Password1" placeholder="请输入密码">
                     </div>
                 </div>
             </div>
@@ -202,11 +198,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" name="Password2"
-                               required data-bv-notempty-message="密码不能为空" data-bv-trigger="blur"
-                               minlength="8" mixlength="20" data-bv-stringlength-message="密码长度在8到20位之间"
-                               data-bv-identical="true" data-bv-identical-field="Password1" data-bv-identical-message="两次输入的密码不一致" placeholder="请再次输入密码"/>
-<!--                    <input type="Password" class="form-control" name="Password2" placeholder="请再次输入密码"> -->
+                        <input type="Password" class="form-control" name="Password2" placeholder="请再次输入密码">
                     </div>
                 </div>
             </div>
@@ -233,10 +225,17 @@
                 <div class="col-lg-6">
                     <div class="col-lg-10">
                         <input type="text" class="form-control" name="describe"
-                                   data-bv-trigger="blur"
-                                   required data-bv-notempty-message="自我介绍不能为空" placeholder="用一句话介绍自己"/>
+                                data-bv-trigger="blur"
+                                required data-bv-notempty-message="自我介绍不能为空" placeholder="用一句话介绍自己"/>
 <!--                <input type="text" class="form-control" name="describe" placeholder="用一句话介绍自己" name="persondesc"> -->
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <button id="submitbtn" class="btn btn-primary verifytitle" data-loading-text="Loading..." type="submit">注册</button>
                 </div>
             </div>
         </div>
