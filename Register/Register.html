@@ -16,6 +16,7 @@
         <link rel="stylesheet" type="text/css" href="CSS/Register.CSS"/>
         <!-- 自定义JS文件 -->
         <script type="text/javascript" src="js/Register.js"></script>        
+        <script type="text/javascript" src="js/PWDcheck.js"></script>        
         <title>Register</title>  
     </head>  
 <body>
@@ -139,7 +140,7 @@
                 <span class="verifytitle">登陆账号</span>
             </div>
             <div class="col-lg-6">
-                <div class="col-lg-10">
+                <div class="col-lg-6">
                     <input type="text" class="form-control" name="loginame"
                             data-bv-trigger="blur" required data-bv-notempty-message="登录名不能为空" 
                             minlength="6" mixlength="18" data-bv-stringlength-message="登录名长度在6到18位之间"         placeholder="账号名长度在6到18位之间"/>
@@ -154,7 +155,7 @@
                     <span class="verifytitle">你的昵称</span>
                 </div>
                 <div class="col-lg-6">
-                    <div class="col-lg-10">
+                    <div class="col-lg-6">
                         <input type="text" class="form-control" name="nickname"
                                    data-bv-trigger="blur"
                                    required data-bv-notempty-message="昵称不能为空" placeholder="中英文皆可"/>
@@ -170,7 +171,7 @@
                     <span class="verifytitle">Email</span>
                 </div>
                 <div class="col-lg-6">
-                    <div class="col-lg-10">
+                    <div class="col-lg-6">
                         <input class="form-control" name="email" type="email" required data-bv-emailaddress-message="邮件地址不合法" placeholder="邮件地址" data-bv-trigger="blur" required data-bv-notempty-message="邮件地址不能为空"/>
 <!--                        <input type="email" class="form-control" name="loginemail" placeholder="邮件地址"> -->
                     </div>
@@ -184,8 +185,11 @@
                     <span class="verifytitle">设置密码</span>
                 </div>
                 <div class="col-lg-6">
-                    <div class="col-lg-10">
-                        <input type="Password" class="form-control" name="Password1" placeholder="请输入密码">
+                    <div class="col-lg-6">
+                        <input type="Password" class="form-control" name="Password1" id="PWD1" placeholder="请输入密码">
+                    </div>
+                    <div class="col-lg-6">
+                        <p id="PWDSts1"></p> 
                     </div>
                 </div>
             </div>
@@ -197,8 +201,11 @@
                     <span class="verifytitle">确认密码</span>
                 </div>
                 <div class="col-lg-6">
-                    <div class="col-lg-10">
-                        <input type="Password" class="form-control" name="Password2" placeholder="请再次输入密码">
+                    <div class="col-lg-6">
+                        <input type="Password" class="form-control" name="Password2" id="PWD2" placeholder="请再次输入密码">
+                    </div>
+                    <div class="col-lg-6">
+                        <p id="PWDSts2"></p> 
                     </div>
                 </div>
             </div>
@@ -210,7 +217,7 @@
                     <span class="verifytitle">上传头像</span>
                 </div>
                 <div class="col-lg-6">
-                    <div class="col-lg-10">
+                    <div class="col-lg-6">
                         <input type="file" id="inputfile">
                     </div>
                 </div>
@@ -223,7 +230,7 @@
                     <span class="verifytitle">个人说明</span>
                 </div>
                 <div class="col-lg-6">
-                    <div class="col-lg-10">
+                    <div class="col-lg-6">
                         <input type="text" class="form-control" name="describe"
                                 data-bv-trigger="blur"
                                 required data-bv-notempty-message="自我介绍不能为空" placeholder="用一句话介绍自己"/>
@@ -239,6 +246,19 @@
                 </div>
             </div>
         </div>
+        <!-- 进度条测试  
+        <br>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-lg-6">
+                    <div class="col-lg-6">
+                        <input type="text" class="form-control" name="progressbar" id="pbar">   
+                        <p id="demo"></p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+         进度条测试 -->        
     </form>
 </div>
 </body>
