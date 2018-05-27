@@ -24,6 +24,9 @@ $(function () {
 		success:function(data){
 			for (var i = 0; i < data.length; i++) {
 				console.log(data[i].author+' '+data[i].title);
+				$("#rolldiv").append(
+					'<p id="book">' + data[i].author + ' '+data[i].title + '</p>'
+				);
 			}
 		},
 		error:function(){
