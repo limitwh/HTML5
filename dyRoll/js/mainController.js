@@ -6,5 +6,8 @@
         _middleController:middleController,
         _rightController:rightController
 	}
+	
+	
+
 	h5.core.controller("#maincontainer",mainController);
 })()
