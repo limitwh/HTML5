@@ -15,6 +15,7 @@
 	<script src="js/leftController.js"></script>
 	<script src="js/middleController.js"></script>	
 	<script src="js/rightController.js"></script>	
+	<script src="js/init.js"></script>		
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation" style="min-height:140px;background: SandyBrown">
@@ -26,9 +27,9 @@
 	    </div>
     </div>
 </nav>
-<div class="mainController" >
+<div class="pageController" id="mainController">
 	<div class="col-lg-6" name="left" style="max-width:30%;float:left;">
-		<textarea class="form-control" rows="25" name="lefttext" style="max-width:100%"></textarea>
+		<textarea class="form-control" rows="25" name="lefttext" id="ltext" style="max-width:100%"></textarea>
 		<button id="leftbtn" class="btn btn-primary" data-loading-text="Loading..." type="submit">提交</button>
 	</div>
 	<div class="panel panel-default col-lg-6" name="middle" style="max-width:30%;float: left;background:#C0C0C0;">
@@ -37,7 +38,7 @@
 		</div>
 	</div>
 	<div class="col-lg-6" name="right" style="max-width:30%;float:left;">
-		<textarea class="form-control" rows="25" name="righttext" style="max-width:100%"></textarea>
+		<textarea class="form-control" rows="25" name="righttext" id="rtext" style="max-width:100%"></textarea>
 		<button id="rightbtn" class="btn btn-primary" data-loading-text="Loading..." type="submit" style="">提交</button>
 	</div>
 </div>
