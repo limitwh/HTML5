@@ -1,8 +1,0 @@
-[
-	{"id":1, "name":"黑客攻防", "price":"20","desc":"从入门到入狱","img":"img/10001.jpg","category":"hacker"},
-	{"id":2, "name":"Mysql", "price":"10","desc":"从删库到跑路","img":"img/10002.jpg","category":"database"},
-	{"id":3, "name":"Googling the error message", "price":"12","desc":"面向Google的编程","img":"img/10003.jpg","category":"coding"},
-	{"id":4, "name":"python", "price":"80","desc":"利用Python计算心理阴影","img":"img/10004.jpg","category":"coding"},
-	{"id":5, "name":"C语言", "price":"25","desc":"从入门到放弃","img":"img/10005.jpg","category":"coding"},
-	{"id":6, "name":"Android", "price":"28","desc":"从入门到改行","img":"img/10006.jpg","category":"coding"}
-]

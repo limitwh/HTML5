@@ -1,44 +1,35 @@
-<!doctype html>
-<html>  
-    <head>  
-        <meta charset="UTF-8">  
-        <script type="text/javascript" src="lib/jquery.min.js"></script>
-        <script type="text/javascript" src="lib/ejs-h5mod.js"></script>
-        <script type="text/javascript" src="lib/h5.dev.js"></script>
-        <script type="text/javascript" src="bootstrap/bootstrap.js"></script>
-        <!-- 在这边引入js文件 -->  
-        <script src="js/BookModel.js"></script>
-        <script src="js/CartModel.js"></script>
-        <script src="js/BookListLogic.js"></script>
-        <script src="js/TestController.js"></script>
-        <script src="js/BookListController.js"></script>
-        <!-- 在这边引入CSS文件 -->  
-        <link rel="stylesheet" type="text/css" href="CSS/WEBTEST.CSS"/>
-        <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
-        <title>Book Store</title>  
-    </head>  
-    <body>  
-    <div class="parent" id="page">    
-        <div class="side"></div>  
-        <div class="main">
-          <div class="logo">
-            <h1>NS BookStore</h1>
-          </div>
-          <div class="search">
-            <button type="button" class="btn btn-default" id="searchname">搜索名字</button>
-            <input class="inputText" type="text" placeholder="输入名字">
-            <br>
-            <button type="button" class="btn btn-default" id="searchcata">搜索类型</button>
-            <input class="inputText" type="text" placeholder="输入类型">
-          </div>
-          <div class="List" id="booklist">
-            <ul data-h5-loop-context="booktest">
-                <span data-h5-bind="name" class="listname"></span>
-            </ul>
-          </div>
-        </div>  
-    </div>    
-    </body> 
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <title>书店</title>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/hifive/ejs-h5mod.js"></script>
+    <script src="lib/hifive/h5.dev.js"></script>
+    <!-- 在这边引入CSS文件 -->  
+	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-theme.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">	
+    <!-- 自定义JS文件 -->
+	<script src="js/mainController.js"></script>   
+	<script src="js/SearchController.js"></script>
+	<script src="js/ListController.js"></script>	
+	<script src="js/CartController.js"></script>
+	<script src="js/CartDetailController.js"></script>	
+	<script src="js/init.js"></script>		
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation" style="min-height:140px;background: SandyBrown">
+    <div class="container-fluid"> 
+	    <div class="navbar-header">
+	        <a class="navbar-brand" >
+	            <img alt="logo" style="max-width:300px;margin-top:-7px;" src="materials/logo.png">
+	        </a>
+	    </div>
+    </div>
+</nav>
+<div class="page" id="mainController">
 
-    <script src="js/init.js"></script>
-</html> 
+</div>
+</body>
+</html>
