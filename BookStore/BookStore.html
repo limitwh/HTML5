@@ -6,20 +6,22 @@
     <script src="lib/hifive/ejs-h5mod.js"></script>
     <script src="lib/hifive/h5.dev.js"></script>
     <!-- 在这边引入CSS文件 -->  
-	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-theme.css">
-	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">	
     <!-- 自定义JS文件 -->
 	<script src="js/mainController.js"></script>   
 	<script src="js/SearchController.js"></script>
+	<script src="js/ListLogic.js"></script>  
 	<script src="js/ListController.js"></script>	
 	<script src="js/CartController.js"></script>
-	<script src="js/CartDetailController.js"></script>	
+	<script src="js/DetailController.js"></script>	
 	<script src="js/init.js"></script>		
+    <!-- 在这边引入CSS文件 -->  
+    <link rel="stylesheet" type="text/css" href="CSS/book.CSS"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation" style="min-height:140px;background: SandyBrown">
+<nav class="navbar navbar-default" role="navigation" style="min-height:140px;background: SandyBrown;width: 100%">
     <div class="container-fluid"> 
 	    <div class="navbar-header">
 	        <a class="navbar-brand" >
@@ -28,8 +30,32 @@
 	    </div>
     </div>
 </nav>
-<div class="page" id="mainController">
+<div class="main" id="mainController">
+	<div class="leftdiv">
+		<div class="Detail" id="BookDetail">
 
+    	</div>
+	</div>
+    <div class="rightdiv">
+    	<div class="Search" id="SearchBook">
+    		<button type="button" class="btn btn-default" id="searchname">搜索名字</button>
+	        <input class="inputText" type="text" id="bookname" placeholder="输入名字">
+    	    <br>
+        	<button type="button" class="btn btn-default" id="searchcata">搜索类型</button>
+        	<input class="inputText" type="text" placeholder="输入类型">
+    	</div>
+	    <div class="List" id="Booklist">
+			<table id="booktable">
+			</table>
+    	</div>
+    </div>
+	<div class="Cart" id="BookCart">
+    	<button type="button" class="btn btn-default" id="returnbtn">返回</button>
+
+    </div>
+    <div class="CartIcon"><span class="glyphicon glyphicon-shopping-cart" id="icon"></span>
+    	<div id="cartnum">0</div>
+    </div>
 </div>
 </body>
 </html>

@@ -1,0 +1,85 @@
+body{   
+    margin:0;   
+    padding:0; 
+    text-align: center;  
+    width: 100%;
+}
+#mainController{
+}
+.leftdiv{
+    border: 1px solid black;  
+    text-align:left;
+    width: 35%;  
+    position: absolute; 
+    top: 150px;
+    bottom: 5px;
+    left: 0px;
+}
+.rightdiv{   
+    position: absolute;
+    left: 37%;
+    top: 150px;
+    right: 0;
+    bottom: 5px;
+}
+.Search{
+    position: absolute;
+    height: 25%;
+    width: 100%;
+    border: 1px solid green;   
+}
+.List{
+    position: absolute;
+    top: 25%;
+    height: 75%;
+    width: 100%;
+    border: 1px solid red; 
+    overflow:scroll;
+    text-align:right;　
+}
+.Cart{
+    border: 1px solid Fuchsia; 
+    text-align:center;
+    width: 35%;  
+    position: absolute;
+    top: 150px;
+    bottom: 5px;
+    left:-38%;
+}
+#addbtn{
+    color:red;
+    list-style:none;
+    text-align:center;
+}
+#icon{
+    font-size:30px;
+    position:absolute;
+    right: 97%;
+    top: 95%;
+}
+#cartnum{
+    font-size:20px;
+    font-weight:900; 
+    color:red;
+    position:absolute;
+    right: 97%;
+    top: 95%;
+}
+table,tr,td,th{
+border: none;
+padding: 0;
+margin: 0;
+}
+table{
+width: 100%;
+float:right;
+}
+table tr{
+line-height: 30px;
+}
+table th,table td{
+text-align: center;
+}
+table tr:nth-child(even){
+background: #FFFFBB;
+}
