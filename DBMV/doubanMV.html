@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <title>豆瓣电影列表</title>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/hifive/ejs-h5mod.js"></script>
+    <script src="lib/hifive/h5.dev.js"></script>
+    <!-- 在这边引入CSS文件 -->  
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-theme.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- 自定义JS文件 -->
+    <script src="js/movieListController.js"></script>
+    <script src="js/topLogic.js"></script>
+    <script src="js/topController.js"></script>
+    <script src="js/init.js"></script>
+    <!-- 在这边引入CSS文件   -->  
+</head>
+<body><div id="movielist">
+<ul class="nav nav-tabs nav-justified">
+    <li id="hot"><a href="#">热门电影</a></li>
+    <li id="coming"><a href="#">近期上映</a></li>
+    <li id="top"><a href="#">Top电影</a></li>
+</ul>
+
+    <div id="toplist">
+        <p>toplist</p>
+    </div>
+    <div id="cominglist">
+        <p>cominglist</p>
+    </div>
+    <div id="hotlist">
+        <p>hotlist</p>
+    </div>
+</div>
+</body>
+</html>
