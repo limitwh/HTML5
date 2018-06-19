@@ -2,10 +2,20 @@
 	'use strict';
 	var topController = {
 		__name: "topController",
-		TopLogic:topLogic,
+		_topLogic:topLogic,
+		movielistarray:[],
+
 		init: function() {
 			console.log("topController init");
-			this.TopLogic.init().done()
+			var hoturl="https://api.douban.com/v2/movie/in_theaters";
+			var url="json/top.json";
+			this._topLogic.getMovieListData(url).done(this.own(this.show));
+		},
+		show:function(list){
+			//this.movielistarray=this.movielistarray.concat(list);
+			//for (var i = 0; i < list.length; i++) {
+				console.log(list);
+			//};
 		}
 	}
 	h5.core.expose(topController);

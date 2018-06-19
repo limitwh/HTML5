@@ -3,26 +3,28 @@
     var topLogic={
         __name:"topLogic",
         init:function(){
-            console.log("topLogic init");
-            var df = this.deferred();
-            var that = this;
-
-            $.ajax({
-                url:'json/top.json',
-                dataType:'json',
-                cache:false,
-                success:function(data){
-                    for (var i = 0; i < data.length; i++) {
-
-                    }
-                    df.resolve();
-                },
-                error:function(){
-                    alert("No data access!");
+        },
+        getMovieListData:function(url){
+            var df=this.deferred();
+            var result=null;
+            this.getMovieData(url).done(function(data){
+                if(typeof data==="object"){
+                    result=data;
+                }else{
+                    result=JSON.parse(data);
                 }
+                df.resolve(result);
+            }).fail(function(error){
+                df.reject(error.message);
+            })
+            return df.promise()
+        },
+        getMovieData:function(url){
+            var promise=h5.ajax(url,{
+                type:"GET",
+                dataType:"json",
             });
-            console.log('init in logic');
-            return df.promise();
+            return promise;
         }
     }
     h5.core.expose(topLogic);
