@@ -1,7 +1,7 @@
 $(function(){
-	var notePadManger= h5.core.data.createManager('NotePadManger');
+	var movieManger= h5.core.data.createManager('NotePadManger');
 	var notePadModel = notePadManger.createModel({
-		name:'NotePadModel',
+		name:'movieModel',
 		schema:{
 			id:{
 				id:true,
