@@ -7,8 +7,8 @@
         topAry:h5.core.data.createObservableArray(),
 
         init:function(url){
-            console.log("topLogic init");
-            this.getMovieListData(url).done(this.own(this.show));
+            //console.log("topLogic init");
+            this.getMovieListData(url).done(this.own(this.pushtoary));
         },
         getMovieListData:function(url){
             var df=this.deferred();
@@ -29,23 +29,22 @@
             var promise=h5.ajax(
                 url,{
                     type:"GET",
-                    dataType:"json",
+                    dataType:"jsonp",
+                    jsonp:"callback",
                 });
             return promise;
+            /*var promise=h5.ajax(
+                url,{
+                    type:"GET",
+                    dataType:"json",
+                });*/
         },
-        show:function(list){
+        pushtoary:function(list){
             var that=this;
-            var toplist=[];
             for (var i = 0; i < list.subjects.length; i++) {
-                toplist.push(       list.subjects[i].title,
-                                    list.subjects[i].year,
-                                    list.subjects[i].rating.average,
-                                    list.subjects[i].images.large
-                            );
-                that.topAry.set(i,toplist);
-                toplist=[];
+                that.topAry.push(list.subjects[i]);
             }
-            console.log(toplist);
+            console.log(that.topAry.get(id));
         }
     }
     h5.core.expose(topLogic);
