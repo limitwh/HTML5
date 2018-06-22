@@ -33,18 +33,24 @@
                     jsonp:"callback",
                 });
             return promise;
-            /*var promise=h5.ajax(
-                url,{
-                    type:"GET",
-                    dataType:"json",
-                });*/
         },
         pushtoary:function(list){
             var that=this;
+            /*console.log(list.subjects);
+            console.log(list.subjects[0].year);           
+            console.log(list.subjects[0].title);
+            console.log(list.subjects[0].rating.average);
+            console.log(list.subjects[0].images.large);*/
             for (var i = 0; i < list.subjects.length; i++) {
-                that.topAry.push(list.subjects[i]);
+                var item = this.model.create({
+                    id: i+1,
+                    name: list.subjects[i].title,
+                    year: list.subjects[i].year,
+                    rate: list.subjects[i].rating.average,
+                    imgsrc: list.subjects[i].images.large
+                });
+                that.topAry.push(item);
             }
-            console.log(that.topAry.get(id));
         }
     }
     h5.core.expose(topLogic);

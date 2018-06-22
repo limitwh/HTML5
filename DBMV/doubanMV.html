@@ -11,31 +11,46 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- 自定义JS文件 -->
     <script src="js/movieModel.js"></script>    
-    <script src="js/topLogic.js"></script>
-    <script src="js/topController.js"></script>
+    <script src="js/movieLogic.js"></script>
+    <script src="js/movieController.js"></script>
     <script src="js/movieListController.js"></script>
     <script src="js/init.js"></script>
-    <!-- 在这边引入CSS文件   -->  
+    <!-- 在这边引入CSS文件   -->
 </head>
-<body><div id="movielist">
-<ul class="nav nav-tabs nav-justified">
-    <li id="hot"><a href="#">热门电影</a></li>
-    <li id="coming"><a href="#">近期上映</a></li>
-    <li id="top"><a href="#">Top电影</a></li>
-</ul>
-
+<body>
+<div id="movielist">
+    <ul class="nav nav-tabs nav-justified">
+        <li id="hot"><a href="#">热门电影</a></li>
+        <li id="coming"><a href="#">近期上映</a></li>
+        <li id="top"><a href="#">Top电影</a></li>
+    </ul>
     <div id="toplist">
-        <p>toplist</p>
-    </div>
-    <div id="cominglist">
-        <p>cominglist</p>
-    </div>
-    <div id="hotlist">
-        <div data-h5-loop-context="hotMovies">
+        <div data-h5-loop-context="topMovies" class="MovieItem">
             <div>
-                <span data-h5-bind="title"></span>
+                <span data-h5-bind="name"></span>
                 <span data-h5-bind="year"></span>
                 <span data-h5-bind="rate"></span>
+                <img data-h5-bind="attr(src):imgsrc"/>
+            </div>
+        </div>
+    </div>
+    <div id="cominglist">
+        <div data-h5-loop-context="comingMovies" class="MovieItem">
+            <div>
+                <span data-h5-bind="name"></span>
+                <span data-h5-bind="year"></span>
+                <span data-h5-bind="rate"></span>
+                <img data-h5-bind="attr(src):imgsrc"/>
+            </div>
+        </div>
+    </div>
+    <div id="hotlist">
+        <div data-h5-loop-context="hotMovies" class="MovieItem">
+            <div>
+                <span data-h5-bind="name"></span>
+                <span data-h5-bind="year"></span>
+                <span data-h5-bind="rate"></span>
+                <img data-h5-bind="attr(src):imgsrc"/>
             </div>
         </div>
     </div>

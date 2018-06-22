@@ -14,7 +14,7 @@
 				type:'string'
 			},
 			rate:{
-				type:'string'
+				type:'number'
 			},
 			imgsrc:{
 				type:'string'

@@ -2,14 +2,12 @@
 	'use strict';
 	var movieListController = {
 		__name:"movieListController",
-		_topController:topController,
+		_movieController:movieController,
 
 		init: function() {
-			console.log("init");
-			this._topController.init();
+			this._movieController.init();
 		},
 		__ready:function(){
-        	console.log('__ready');
         	this.init();
         	$("#toplist").hide();
         	$("#cominglist").hide();

@@ -2,15 +2,15 @@
 	'use strict';
 	var topController = {
 		__name: "topController",
-		_topLogic:topLogic,
+		_hotLogic:hotLogic,
 
 		init: function() {
 			var that=this;
 			//console.log("topController init");
-			var topurl="https://api.douban.com/v2/movie/top250";
-			this._topLogic.init(topurl);
-			this.view.bind('#toplist', {
-                    topMovies: that._topLogic.topAry
+			var hoturl="https://api.douban.com/v2/movie/in_theaters";
+			this._hotLogic.init(hoturl);
+			this.view.bind('#hotlist', {
+                    hotMovies: that._hotLogic.hotAry
 			});
 		},
 	}
