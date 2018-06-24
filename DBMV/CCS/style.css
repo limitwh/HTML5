@@ -1,0 +1,11 @@
+@charset 'utf-8';
+.movieitem{
+	width: 300px;
+    height: 550px;
+    margin: 15px 100px 15px 400px;
+    background: #8E8E8E;
+    text-align: center;
+}
+.img{
+	padding:0px 10px 10px 10px;
+}
