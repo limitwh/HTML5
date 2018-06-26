@@ -13,7 +13,6 @@
     <script src="js/movieModel.js"></script>    
     <script src="js/movieLogic.js"></script>
     <script src="js/movieController.js"></script>
-    <script src="js/movieListController.js"></script>
     <script src="js/init.js"></script>
     <!-- 在这边引入CSS文件   -->
     <link rel="stylesheet" type="text/css" href="CCS/style.css">
@@ -21,37 +20,37 @@
 <body>
 <div id="movielist">
     <ul class="nav nav-tabs nav-justified">
-        <li id="hot"><a href="#">热门电影</a></li>
+        <li id="hot" ><a class="selected" href="#">热门电影</a></li>
         <li id="coming"><a href="#">近期上映</a></li>
         <li id="top"><a href="#">Top电影</a></li>
     </ul>
-    <div id="toplist">
+    <div id="toplist" class="container-movie">
         <div data-h5-loop-context="topMovies" >
             <div class="movieitem">
-                <p>电影名：<span data-h5-bind="name"></span></p><br>
+                <p>电影名：<span data-h5-bind="title"></span></p><br>
                 <p>出品年限：<span data-h5-bind="year"></span></p><br>
-                <p>评分：<span data-h5-bind="rate"></span></p><br>
-                <img data-h5-bind="attr(src):imgsrc" class="img" />
+                <p data-h5-context="rating">评分：<span data-h5-bind="average"></span></p><br>
+                <div data-h5-context="images"><img data-h5-bind="attr(src):large" class="img" /></div>
             </div>
         </div>
     </div>
-    <div id="cominglist">
+    <div id="cominglist" class="container-movie">
         <div data-h5-loop-context="comingMovies" >
             <div class="movieitem">
-                <p>电影名：<span data-h5-bind="name"></span></p><br>
+                <p>电影名：<span data-h5-bind="title"></span></p><br>
                 <p>出品年限：<span data-h5-bind="year"></span></p><br>
-                <p>评分：<span data-h5-bind="rate"></span></p><br>
-                <img data-h5-bind="attr(src):imgsrc" class="img" />
+                <p data-h5-context="rating">评分：<span data-h5-bind="average"></span></p><br>
+                <div data-h5-context="images"><img data-h5-bind="attr(src):large" class="img" /></div>
             </div>
         </div>
     </div>
-    <div id="hotlist">
+    <div id="hotlist" class="container-movie">
         <div data-h5-loop-context="hotMovies" >
             <div class="movieitem">
-                <p>电影名：<span data-h5-bind="name"></span></p><br>
+                 <p>电影名：<span data-h5-bind="title"></span></p><br>
                 <p>出品年限：<span data-h5-bind="year"></span></p><br>
-                <p>评分：<span data-h5-bind="rate"></span></p><br>
-                <img data-h5-bind="attr(src):imgsrc" class="img" />
+                <p data-h5-context="rating">评分：<span data-h5-bind="average"></span></p><br>
+                <div data-h5-context="images"><img data-h5-bind="attr(src):large" class="img" /></div>
             </div>
         </div>
     </div>

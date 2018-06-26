@@ -2,22 +2,56 @@
 	var movieManger= h5.core.data.createManager('movieManger');
 	var movieModel = movieManger.createModel({
 		name:'movieModel',
-		schema:{
-			id:{
-				id:true,
-				type:'integer'
+		schema: {
+			// 条目id
+			id: {
+				id: true,
+				type: 'string'
 			},
-			name:{
-				type:'string'
+			//条目页url
+			alt: {
+				type: 'string'
 			},
-			year:{
-				type:'string'
+			//主演
+			casts: {
+				//数组类型
+				type: 'any[]'
 			},
-			rate:{
-				type:'number'
+			//看过人数
+			collect_count: {
+				type: 'integer'
 			},
-			imgsrc:{
-				type:'string'
+			//导演
+			directors: {
+				type: 'any[]'
+			},
+			//影片类型
+			genres: {
+				type: 'any[]'
+			},
+			// movieName
+			title: {
+				type: 'string'
+			},
+			// movieImage
+			images: {
+				type: 'any'
+			},
+			//原名
+			original_title: {
+				type: 'string'
+			},
+			// 评分
+			rating: {
+				type: 'any'
+			},
+			//条目分类
+			subtype: {
+				type: 'string'
+			},
+			//年份
+			year: {
+				type: 'string'
 			}
 		}
 	})

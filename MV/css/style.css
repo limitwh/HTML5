@@ -1,0 +1,111 @@
+@charset 'utf-8';
+*{
+	margin:0;
+	padding:0;
+}
+#head{
+	background-color:black;
+	color:white;
+	height: 120px;
+	width: 100%;
+	padding-top: 20px;
+	position:fixed;
+	top:0px;
+	z-index:99999;
+}
+#headTitle{
+	font-size: 40px;
+	text-align: center;
+	min-width: 400px;
+	height: calc(80% - 17px);
+}
+#headBtn{
+	height: calc(20% + 17px);
+	min-width: 400px;
+}
+.btnClass{
+	float: left;
+	width: 33%;
+	height: 100%;
+	min-width: 133px;
+	text-align: center;
+	cursor:pointer;	
+}
+.Sankaku1{	
+	line-height: 10px;
+	color: black;
+}
+.Sankaku2{
+	line-height: 10px;
+	color: white;
+}
+.btnText1{
+	line-height: 29px;
+	color: gray;
+}
+.btnText2{
+	line-height: 29px;
+	color: white;
+}
+.bodyClass{
+	display: inline-block;
+	position:absolute;
+	margin-top: 140px;
+}
+#body1{
+	left: calc(50% - 150px);
+}
+#body2{
+	left: -100%;
+}
+#body3{
+	left: -100%;
+}
+.class1{
+	margin-top: 50px;
+	padding: 15px;
+	width: 270px;
+	background-color: #444242;
+	color:white
+}
+#moreMovie{
+	width: 100%;
+	bottom: 0px;
+	margin-bottom: 20px;
+}
+.moreMovie0{
+	width:30px;
+	height:30px;
+	margin-left: calc(50% - 20px);
+}
+.moreMovie1{
+	width: 80px;
+	margin-left: calc(50% - 40px);
+	color:gray;
+	margin-bottom: 10px;
+}
+.moreMovie2{
+	width:30px;
+  	height:10px;
+ 	border-radius: 50% / 100% 100% 0 0;
+ 	background-color: black;
+ 	margin-bottom: 20px;	
+}
+.moreMovie3{
+	width: 120px;
+	margin-left: calc(50% - 60px);
+	color:gray;
+	margin-bottom: 10px;
+}
+h3{
+	display: inline-block;
+}
+#srollUpBtn{
+	width: 50px;
+	height: 36px;
+	background-image: url(../img/捕获.PNG);
+	position:fixed;
+	right: 20px;
+	bottom: 20px;
+	opacity:0.0;
+}

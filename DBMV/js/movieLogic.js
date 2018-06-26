@@ -7,10 +7,6 @@
         hotAry:h5.core.data.createObservableArray(),
         topAry:h5.core.data.createObservableArray(),
         comingAry:h5.core.data.createObservableArray(),
-
-        init:function(){
-
-        },
         gethot:function(url){
             this.getMovieListData(url).done(this.own(this.pushhotary));
         },
@@ -48,43 +44,31 @@
             return promise;
         },
         pushhotary:function(list){
-            var that=this;
-            for (var i = 0; i < list.subjects.length; i++) {
-                var item = this.model.create({
-                    id: i+1,
-                    name: list.subjects[i].title,
-                    year: list.subjects[i].year,
-                    rate: list.subjects[i].rating.average,
-                    imgsrc: list.subjects[i].images.large
-                });
-                that.hotAry.push(item);
-            }
+        	console.log(list)
+        	var dataItems = this.model.create(list.subjects);
+        	this.hotAry.copyFrom(dataItems);
+        	
+        },
+        getHotArray:function(){
+        	return this.hotAry;
+        },
+        getTopArray:function(){
+        	return this.topAry;
+        },
+        getComArray:function(){
+        	return this.comingAry;
         },
         pushtopary:function(list){
-            var that=this;
-            for (var i = 0; i < list.subjects.length; i++) {
-                var item = this.model.create({
-                    id: i+1,
-                    name: list.subjects[i].title,
-                    year: list.subjects[i].year,
-                    rate: list.subjects[i].rating.average,
-                    imgsrc: list.subjects[i].images.large
-                });
-                that.topAry.push(item);
-            }
+        	console.log(list)
+        	var dataItems = this.model.create(list.subjects);
+        	this.topAry.copyFrom(dataItems);
+        	
         },
         pushcomary:function(list){
-            var that=this;
-            for (var i = 0; i < list.subjects.length; i++) {
-                var item = this.model.create({
-                    id: i+1,
-                    name: list.subjects[i].title,
-                    year: list.subjects[i].year,
-                    rate: list.subjects[i].rating.average,
-                    imgsrc: list.subjects[i].images.large
-                });
-                that.comingAry.push(item);
-            }
+        	console.log(list)
+        	var dataItems = this.model.create(list.subjects);
+        	this.comingAry.copyFrom(dataItems);
+        	
         }
     }
     h5.core.expose(movieLogic);
