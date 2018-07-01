@@ -42,3 +42,12 @@ div#toplist {
 	
 	left: -168px;
 }
+.topIcon{
+	
+}
+#toTop{
+    font-size:30px;
+    position:fixed;
+    right: 7%;
+    top: 95%;
+}

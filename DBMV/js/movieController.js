@@ -13,6 +13,7 @@
 		comItems: null,
 		topItems: null,
 		__ready: function() {
+			this.$find('#toTop').hide();
 			this.hotbind();
 			this.combind();
 			this.topbind();
@@ -86,7 +87,7 @@
 		// 导航栏点击事件
 		'.nav click': function(context, $el) {
 			console.log(context)
-			// 选中标签样式调整   点击之前                                             call方法  调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.call(A, args1,args2);即A对象调用B对象的方法。
+			// 选中标签样式调整   点击之前   call方法  调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.call(A, args1,args2);即A对象调用B对象的方法。
 			//导航栏的li调用数组的indexOf方法 indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。 返回当前带有.selected类的字符串在lis中存在的下标
 			var from = Array.prototype.indexOf.call(this.$find('li a'), this.$find('.selected')[0]);
 			this.$find('li a').removeClass('selected');
@@ -96,6 +97,22 @@
 			var to = Array.prototype.indexOf.call(this.$find('li a'), context.event.target);
 			// 绑定内容更新
 			this.switchView(from, to);
+		},
+		//滚动条事件
+		'{window} scroll':function(context,$el){
+
+			if($(document).scrollTop()>600){
+				this.$find('#toTop').fadeIn(500);
+			} else {
+				this.$find('#toTop').fadeOut(500);
+			}
+		},
+		//返回顶部
+		'#toTop click':function(context,$el){	
+			$('body,html').animate({
+				"scrollTop":0},
+				this.__BACK_TOP_TIME
+			);
 		}
 	}
 	h5.core.expose(movieController);
