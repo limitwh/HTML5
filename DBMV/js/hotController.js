@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
 	'use strict';
 	var topController = {
 		__name: "topController",
@@ -15,4 +15,4 @@
 		},
 	}
 	h5.core.expose(topController);
-})()
+})()*/

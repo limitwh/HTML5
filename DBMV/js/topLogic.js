@@ -1,4 +1,4 @@
-(function(){
+/*(function(){
 	'use strict';
     var topLogic={
         __name:"topLogic",
@@ -36,11 +36,6 @@
         },
         pushtoary:function(list){
             var that=this;
-            /*console.log(list.subjects);
-            console.log(list.subjects[0].year);           
-            console.log(list.subjects[0].title);
-            console.log(list.subjects[0].rating.average);
-            console.log(list.subjects[0].images.large);*/
             for (var i = 0; i < list.subjects.length; i++) {
                 var item = this.model.create({
                     id: i+1,
@@ -54,4 +49,4 @@
         }
     }
     h5.core.expose(topLogic);
-})()
+})()*/
